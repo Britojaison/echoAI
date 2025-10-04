@@ -141,7 +141,7 @@ export function FeaturesSection() {
   }, [isVisible])
 
   return (
-    <section id="features" className="py-20 bg-background">
+    <section id="features" className="py-20" style={{ background: 'transparent' }}>
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div

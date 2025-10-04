@@ -40,7 +40,7 @@ export function TrustBar() {
   }, [])
 
   return (
-    <section id="trust-bar" className="py-12 bg-background/50 backdrop-blur-sm">
+    <section id="trust-bar" className="py-12" style={{ background: 'transparent' }}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 1, y: 0 }}
@@ -48,9 +48,7 @@ export function TrustBar() {
           transition={{ duration: 0.6 }}
           className="text-center mb-8"
         >
-          <p className="text-muted-foreground text-sm font-medium uppercase tracking-wider">
-            Trusted by leading brands
-          </p>
+        
         </motion.div>
 
         <motion.div
