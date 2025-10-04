@@ -86,7 +86,7 @@ export function BenefitsSection() {
   }, [isVisible])
 
   return (
-    <section id="benefits" className="py-20 bg-background">
+    <section id="benefits" className="py-20" style={{ background: 'transparent' }}>
       <div className="container mx-auto px-4">
         <div className="space-y-32">
           {benefits.map((benefit, index) => (

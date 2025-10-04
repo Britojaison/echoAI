@@ -21,7 +21,7 @@ export function VoicePulseBackground() {
     for (let i = 0; i < barCount; i++) {
       generatedBars.push({
         id: i,
-        baseHeight: Math.random() * 50 + 30, // Random height between 30% and 80%
+        baseHeight: 100 + Math.random() * 200, // Random height between 100px and 300px
       });
     }
     
@@ -71,35 +71,38 @@ export function VoicePulseBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
-      {/* Gradient overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/60 to-background/75" />
-      
-      {/* Voice pulse bars */}
-      <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-5 px-4">
+    <>
+      {/* Voice pulse bars - fixed in viewport center, visible across entire page */}
+      <div 
+        className="fixed flex items-center justify-between px-8 pointer-events-none"
+        style={{
+          top: '50vh',
+          left: '0',
+          right: '0',
+          transform: 'translateY(-50%)',
+          zIndex: 5,
+        }}
+      >
         {bars.map((bar) => {
-          // Calculate dynamic height based on scroll speed
-          const heightIncrease = 5 + (scrollSpeed * 25); // 5% to 30% increase
-          const dynamicHeight = bar.baseHeight + (bar.baseHeight * heightIncrease / 100);
+          // Calculate dynamic height based on scroll speed (5-30% increase)
+          const heightIncrease = 1 + (0.05 + scrollSpeed * 0.25);
+          const dynamicHeight = bar.baseHeight * heightIncrease;
           
           return (
             <div
               key={bar.id}
-              className="relative"
               style={{
                 width: '8px',
-                height: `${dynamicHeight}%`,
-                maxHeight: '60vh',
-                background: 'linear-gradient(to top, hsl(217 91% 60% / 0.5), hsl(217 91% 60% / 0.8), hsl(217 91% 60% / 0.5))',
+                height: `${dynamicHeight}px`,
+                background: 'linear-gradient(180deg, rgba(96, 165, 250, 0.4) 0%, rgba(96, 165, 250, 0.9) 50%, rgba(96, 165, 250, 0.4) 100%)',
                 borderRadius: '999px',
-                boxShadow: '0 0 20px hsl(217 91% 60% / 0.3), 0 0 40px hsl(217 91% 60% / 0.2)',
+                boxShadow: '0 0 20px rgba(96, 165, 250, 0.5), 0 0 40px rgba(96, 165, 250, 0.3)',
                 transition: `all ${scrollSpeed > 0 ? '100ms' : '300ms'} ease-out`,
               }}
             />
           );
         })}
       </div>
-    </div>
+    </>
   );
 }
-

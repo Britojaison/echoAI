@@ -7,7 +7,9 @@ import { Phone } from "lucide-react"
 
 export function HeroSection() {
   return (
-    <section className="relative h-[50vh] flex items-center justify-center bg-background">
+    <section className="relative h-[50vh] flex items-center justify-center"
+      style={{ background: 'transparent' }}
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Left Column - Headline */}

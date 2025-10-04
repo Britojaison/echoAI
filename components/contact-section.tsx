@@ -62,7 +62,7 @@ export function ContactSection() {
   ]
 
   return (
-    <section id="contact" className="py-20 bg-background">
+    <section id="contact" className="py-20" style={{ background: 'transparent' }}>
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
