@@ -15,13 +15,13 @@ export function VoicePulseBackground() {
 
   // Generate random bars on mount
   useEffect(() => {
-    const barCount = 60; // Number of bars
+    const barCount = 50; // Number of bars
     const generatedBars: Bar[] = [];
     
     for (let i = 0; i < barCount; i++) {
       generatedBars.push({
         id: i,
-        baseHeight: Math.random() * 60 + 20, // Random height between 20% and 80%
+        baseHeight: Math.random() * 50 + 30, // Random height between 30% and 80%
       });
     }
     
@@ -73,10 +73,10 @@ export function VoicePulseBackground() {
   return (
     <div className="fixed inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
       {/* Gradient overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/60 to-background/75" />
       
       {/* Voice pulse bars */}
-      <div className="flex items-center justify-center gap-1 sm:gap-1.5 md:gap-2 px-4">
+      <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-5 px-4">
         {bars.map((bar) => {
           // Calculate dynamic height based on scroll speed
           const heightIncrease = 5 + (scrollSpeed * 25); // 5% to 30% increase
@@ -85,12 +85,15 @@ export function VoicePulseBackground() {
           return (
             <div
               key={bar.id}
-              className="bg-gradient-to-t from-primary/20 via-primary/30 to-primary/20 rounded-full transition-all"
+              className="relative"
               style={{
-                width: '4px',
+                width: '8px',
                 height: `${dynamicHeight}%`,
-                transitionDuration: scrollSpeed > 0 ? '100ms' : '300ms',
-                transitionTimingFunction: 'ease-out',
+                maxHeight: '60vh',
+                background: 'linear-gradient(to top, hsl(217 91% 60% / 0.5), hsl(217 91% 60% / 0.8), hsl(217 91% 60% / 0.5))',
+                borderRadius: '999px',
+                boxShadow: '0 0 20px hsl(217 91% 60% / 0.3), 0 0 40px hsl(217 91% 60% / 0.2)',
+                transition: `all ${scrollSpeed > 0 ? '100ms' : '300ms'} ease-out`,
               }}
             />
           );
