@@ -141,13 +141,14 @@ export function FeaturesSection() {
   }, [isVisible])
 
   return (
-    <section id="features" className="py-20" style={{ background: 'transparent' }}>
+    <section id="how-it-works" className="py-20" style={{ background: 'transparent' }}>
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: false, margin: "-100px" }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">

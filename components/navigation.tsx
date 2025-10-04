@@ -20,10 +20,10 @@ export function Navigation() {
   }, [])
 
   const navigation = [
-    { name: "Features", href: "#features" },
     { name: "Benefits", href: "#benefits" },
-    { name: "Case Studies", href: "#case-studies" },
+    { name: "Customization", href: "#customization" },
     { name: "How It Works", href: "#how-it-works" },
+    { name: "Case Studies", href: "#case-studies" },
   ]
 
   return (
@@ -39,9 +39,6 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">E</span>
-            </div>
             <span className="text-xl font-bold gradient-text">ECHO AI</span>
           </Link>
 
@@ -61,13 +58,13 @@ export function Navigation() {
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Button variant="ghost" size="sm" asChild>
-              <Link href="#talk-to-sales" className="flex items-center space-x-2">
+              <Link href="#contact" className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
                 <span>Talk to Sales</span>
               </Link>
             </Button>
             <Button size="sm" asChild>
-              <Link href="#book-demo" className="flex items-center space-x-2">
+              <Link href="#contact" className="flex items-center space-x-2">
                 <Calendar className="w-4 h-4" />
                 <span>Book Demo</span>
               </Link>
@@ -103,13 +100,13 @@ export function Navigation() {
               ))}
               <div className="pt-4 space-y-3">
                 <Button variant="ghost" size="sm" className="w-full" asChild>
-                  <Link href="#talk-to-sales" className="flex items-center justify-center space-x-2">
+                  <Link href="#contact" className="flex items-center justify-center space-x-2">
                     <Phone className="w-4 h-4" />
                     <span>Talk to Sales</span>
                   </Link>
                 </Button>
                 <Button size="sm" className="w-full" asChild>
-                  <Link href="#book-demo" className="flex items-center justify-center space-x-2">
+                  <Link href="#contact" className="flex items-center justify-center space-x-2">
                     <Calendar className="w-4 h-4" />
                     <span>Book Demo</span>
                   </Link>
