@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Phone, Calendar } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -38,8 +39,13 @@ export function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold gradient-text">ECHO AI</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/echo-logo.png"
+              alt="ECHO AI Logo"
+              width={100}
+              height={100}
+            />
           </Link>
 
           {/* Desktop Navigation */}

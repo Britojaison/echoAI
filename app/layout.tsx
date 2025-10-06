@@ -13,6 +13,19 @@ export const metadata: Metadata = {
   authors: [{ name: 'ECHO AI' }],
   creator: 'ECHO AI',
   publisher: 'ECHO AI',
+  icons: {
+    icon: [
+      { url: '/echo-logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/echo-logo.png', sizes: '64x64', type: 'image/png' },
+      { url: '/echo-logo.png', sizes: '96x96', type: 'image/png' },
+      { url: '/echo-logo.png', sizes: '128x128', type: 'image/png' },
+      { url: '/echo-logo.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/echo-logo.png',
+    apple: [
+      { url: '/echo-logo.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -30,8 +43,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
+        width: 1400,
+        height: 700,
         alt: 'ECHO AI - AI Voice Calling Agents',
       },
     ],
