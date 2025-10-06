@@ -21,7 +21,7 @@ export function VoicePulseBackground() {
     for (let i = 0; i < barCount; i++) {
       generatedBars.push({
         id: i,
-        baseHeight: 100 + Math.random() * 200, // Random height between 100px and 300px
+        baseHeight: 150 + Math.random() * 250, // Random height between 150px and 400px
       });
     }
     
@@ -92,11 +92,11 @@ export function VoicePulseBackground() {
             <div
               key={bar.id}
               style={{
-                width: '8px',
+                width: '12px',
                 height: `${dynamicHeight}px`,
-                background: 'linear-gradient(180deg, rgba(96, 165, 250, 0.4) 0%, rgba(96, 165, 250, 0.9) 50%, rgba(96, 165, 250, 0.4) 100%)',
+                background: 'linear-gradient(180deg, rgba(59, 130, 246, 0.9) 0%, rgba(59, 130, 246, 1) 50%, rgba(59, 130, 246, 0.9) 100%)',
                 borderRadius: '999px',
-                boxShadow: '0 0 20px rgba(96, 165, 250, 0.5), 0 0 40px rgba(96, 165, 250, 0.3)',
+                boxShadow: '0 0 40px rgba(59, 130, 246, 0.9), 0 0 80px rgba(59, 130, 246, 0.6)',
                 transition: `all ${scrollSpeed > 0 ? '100ms' : '300ms'} ease-out`,
               }}
             />
