@@ -151,10 +151,10 @@ export function FeaturesSection() {
           viewport={{ once: false, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
             How ECHO AI Works
           </h2>
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
             Our intelligent voice AI system transforms customer conversations into actionable insights and automated workflows.
           </p>
         </motion.div>
@@ -173,7 +173,7 @@ export function FeaturesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: false, margin: "-100px" }}
-                className={`step-item fade-up grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${
+                className={`step-item fade-up grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center ${
                   index % 2 === 1 ? 'md:grid-flow-col-dense' : ''
                 }`}
               >
@@ -185,22 +185,22 @@ export function FeaturesSection() {
                   viewport={{ once: false, margin: "-100px" }}
                   className={`space-y-6 ${index % 2 === 1 ? 'md:col-start-2' : ''}`}
                 >
-                  <div className="flex items-center space-x-4">
-                    <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
+                  <div className="flex items-center space-x-3 sm:space-x-4">
+                    <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold text-sm sm:text-lg shadow-lg`}>
                       {step.number}
                     </div>
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-white">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
                         {step.title}
                       </h3>
                     </div>
                   </div>
                   
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                     {step.description}
                   </p>
 
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {step.features.map((feature, idx) => (
                       <motion.div
                         key={idx}
@@ -223,15 +223,15 @@ export function FeaturesSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 + 0.5 }}
                   viewport={{ once: false, margin: "-100px" }}
-                  className={`relative flex justify-center items-center h-64 ${index % 2 === 1 ? 'md:col-start-1' : ''}`}
+                  className={`relative flex justify-center items-center h-48 sm:h-56 md:h-64 ${index % 2 === 1 ? 'md:col-start-1' : ''}`}
                 >
                   <motion.div
                     className="relative"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className={`w-32 h-32 rounded-2xl bg-gradient-to-br ${step.color} shadow-xl flex items-center justify-center`}>
-                      <step.icon className="w-16 h-16 text-white" />
+                    <div className={`w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-2xl bg-gradient-to-br ${step.color} shadow-xl flex items-center justify-center`}>
+                      <step.icon className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white" />
                     </div>
                     
                     {/* Floating elements */}
@@ -251,7 +251,7 @@ export function FeaturesSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-20"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}

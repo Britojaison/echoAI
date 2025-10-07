@@ -16,7 +16,9 @@ export function VoicePulseBackground() {
 
   // Generate random bars on mount
   useEffect(() => {
-    const barCount = 50; // Number of bars
+    // Reduce bars on mobile for better performance
+    const isMobile = window.innerWidth < 768;
+    const barCount = isMobile ? 20 : 50; // Fewer bars on mobile
     const generatedBars: Bar[] = [];
     
     for (let i = 0; i < barCount; i++) {
@@ -101,7 +103,7 @@ export function VoicePulseBackground() {
     <>
       {/* Voice pulse bars - fixed in viewport center, visible across entire page */}
       <div 
-        className="fixed flex items-center justify-between px-8 pointer-events-none"
+        className="fixed flex items-center justify-between px-4 sm:px-6 md:px-8 pointer-events-none"
         style={{
           top: '50vh',
           left: '0',
@@ -125,11 +127,11 @@ export function VoicePulseBackground() {
             <div
               key={bar.id}
               style={{
-                width: '8px',
+                width: '4px',
                 height: `${dynamicHeight}px`,
                 background: 'linear-gradient(180deg, rgba(96, 165, 250, 0.2) 0%, rgba(96, 165, 250, 0.4) 50%, rgba(96, 165, 250, 0.2) 100%)',
                 borderRadius: '999px',
-                boxShadow: `0 0 20px rgba(96, 165, 250, ${glowIntensity}), 0 0 40px rgba(96, 165, 250, ${shadowIntensity})`,
+                boxShadow: `0 0 10px rgba(96, 165, 250, ${glowIntensity}), 0 0 20px rgba(96, 165, 250, ${shadowIntensity})`,
                 transition: `all ${scrollSpeed > 0 ? '100ms' : '300ms'} ease-out`,
               }}
             />

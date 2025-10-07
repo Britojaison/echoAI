@@ -43,8 +43,9 @@ export function Navigation() {
             <Image
               src="/echo-logo.png"
               alt="ECHO AI Logo"
-              width={100}
-              height={100}
+              width={80}
+              height={80}
+              className="w-16 h-16 sm:w-20 sm:h-20"
             />
           </Link>
 
@@ -62,7 +63,7 @@ export function Navigation() {
           </div>
 
           {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             <Button variant="ghost" size="sm" asChild>
               <Link href="#contact" className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
@@ -79,7 +80,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="lg:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
@@ -92,7 +93,7 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border">
+          <div className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border">
             <div className="px-4 py-6 space-y-4">
               {navigation.map((item) => (
                 <Link
