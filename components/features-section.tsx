@@ -289,7 +289,7 @@ export function FeaturesSection() {
           transition={{ duration: 0.6, delay: 1.2 }}
           className="text-center mt-20"
         >
-          <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
+          <Card className="max-w-8xl mx-auto bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
             <CardContent className="p-8">
               <h3 className="text-3xl font-bold text-white mb-4">
                 Ready to Transform Your Customer Engagement?

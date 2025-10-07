@@ -280,13 +280,13 @@ export function ContactSection() {
               <div className="text-center">
                 <Users className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-2xl font-bold mb-4">TRUSTED by 500+ COMPANIES</h3>
-                <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground mb-6 max-w-4xl mx-auto">
                   Join industry leaders who have transformed their customer engagement with ECHO AI.
                 </p>
-                <div className="flex justify-center space-x-8 text-sm">
+                <div className="flex justify-center space-x-40 text-sm">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-primary">95%</div>
-                    <div className="text-muted-foreground">Satisfaction</div>
+                    <div className="text-muted-foreground">Satisfaction</div><hr/>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-primary">24/7</div>
