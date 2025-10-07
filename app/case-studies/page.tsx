@@ -82,7 +82,7 @@ const caseStudies = [
   {
     id: 'cinco',
     company: 'Cinco',
-    industry: 'Restaurant & Hospitality',
+    industry: 'Real Estate',
     hero: {
       title: 'How Cinco Restaurant Chain Automated Reservations with ECHO AI',
       subtitle: 'Handling thousands of reservation calls while delivering exceptional customer experience',
@@ -204,7 +204,7 @@ function CaseStudiesContent() {
                   <div className="w-96 h-96 md:w-[28rem] md:h-[28rem] flex items-center justify-center p-8">
                     {selectedCase.id === 'creative-orbit' ? (
                       <img 
-                        src="/creative_orbit.svg" 
+                          src="/creative_orbit.png" 
                         alt="Creative Orbit Logo" 
                         className="w-full h-full object-contain"
                       />
