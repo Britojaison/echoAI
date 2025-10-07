@@ -233,33 +233,42 @@ function CaseStudiesContent() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-start relative">
-              {/* Left side with gradient background - 70% width */}
+              {/* Left side with gradient background */}
               <div className="md:col-span-1 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-800 rounded-2xl"></div>
                 <div className="relative z-10 p-8 text-white">
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                     {selectedCase.challenge.title}
                   </h2>
-                  <p className="text-lg text-blue-100 leading-relaxed">
+                  <p className="text-lg text-blue-100 leading-relaxed mb-8">
                     {selectedCase.challenge.description}
                   </p>
+                  
+                  {/* Key Challenges moved inside the gradient box */}
+                  <div className="mt-8">
+                    <h3 className="text-xl font-bold text-white mb-6">Key Challenges:</h3>
+                    <ul className="space-y-4">
+                      {selectedCase.challenge.points.map((point, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <div className="mt-1 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                            <div className="w-2 h-2 rounded-full bg-white" />
+                          </div>
+                          <span className="text-blue-100">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
               
-              {/* Right side content */}
-              <div className="md:col-span-1">
-                <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-                  <h3 className="text-xl font-bold text-gray-900 mb-6">Key Challenges:</h3>
-                  <ul className="space-y-4">
-                    {selectedCase.challenge.points.map((point, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <div className="mt-1 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                          <div className="w-2 h-2 rounded-full bg-red-500" />
-                        </div>
-                        <span className="text-gray-700">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Right side with Frame 3.png image */}
+              <div className="md:col-span-1 flex justify-center items-center">
+                <div className="w-full max-w-md">
+                  <img 
+                    src="/Frame 3.png" 
+                    alt="Challenge Illustration" 
+                    className="w-full h-auto object-contain"
+                  />
                 </div>
               </div>
             </div>
