@@ -114,137 +114,102 @@ export function ContactSection() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Form Section */}
-          <motion.div
-            initial={{ opacity: 1, x: 0 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  {activeForm === 'demo' ? (
-                    <>
-                      <Calendar className="w-5 h-5 text-primary" />
-                      <span>Book a Demo</span>
-                    </>
-                  ) : (
-                    <>
-                      <Phone className="w-5 h-5 text-primary" />
-                      <span>Talk to Sales</span>
-                    </>
-                  )}
-                </CardTitle>
-                <p className="text-muted-foreground">
-                  {activeForm === 'demo' 
-                    ? "Schedule a personalized demonstration of ECHO AI's capabilities."
-                    : "Get a customized consultation for your specific business needs."
-                  }
+        {/* Book a Demo Section - Full Width */}
+        <motion.div
+          initial={{ opacity: 1, y: 0 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mb-12"
+        >
+          <Card className="w-full bg-white/10 backdrop-blur-md border-white/20 shadow-xl">
+            <CardHeader className="text-center">
+              <CardTitle className="flex items-center justify-center space-x-2 text-2xl">
+                <Calendar className="w-6 h-6 text-primary" />
+                <span>Book a DEMO</span>
+              </CardTitle>
+              <p className="text-muted-foreground">
+                Schedule a personalized demonstration of ECHO AI's capabilities.
+              </p>
+            </CardHeader>
+            <CardContent>
+              <form className="space-y-6 max-w-2xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">First Name *</label>
+                    <Input placeholder="John" required />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Last Name *</label>
+                    <Input placeholder="Doe" required />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email *</label>
+                  <Input type="email" placeholder="john@company.com" required />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Company *</label>
+                  <Input placeholder="Your Company Name" required />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Phone Number</label>
+                  <Input type="tel" placeholder="+1 (555) 123-4567" />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Use Case</label>
+                  <select className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm">
+                    <option>Customer Feedback Collection</option>
+                    <option>Lead Qualification</option>
+                    <option>Customer Support</option>
+                    <option>Market Research</option>
+                    <option>Appointment Scheduling</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Additional Notes</label>
+                  <Textarea 
+                    placeholder="Tell us about your specific use case or any questions you have..."
+                    rows={4}
+                  />
+                </div>
+
+                <Button type="submit" size="lg" className="w-full">
+                  Schedule Demo
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+
+                <p className="text-xs text-muted-foreground text-center">
+                  By submitting this form, you agree to our privacy policy and terms of service.
                 </p>
-              </CardHeader>
-              <CardContent>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-2">First Name *</label>
-                      <Input placeholder="John" required />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Last Name *</label>
-                      <Input placeholder="Doe" required />
-                    </div>
-                  </div>
+              </form>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Email *</label>
-                    <Input type="email" placeholder="john@company.com" required />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Company *</label>
-                    <Input placeholder="Your Company Name" required />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Phone Number</label>
-                    <Input type="tel" placeholder="+1 (555) 123-4567" />
-                  </div>
-
-                  {activeForm === 'demo' && (
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Use Case</label>
-                      <select className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm">
-                        <option>Customer Feedback Collection</option>
-                        <option>Lead Qualification</option>
-                        <option>Customer Support</option>
-                        <option>Market Research</option>
-                        <option>Appointment Scheduling</option>
-                        <option>Other</option>
-                      </select>
-                    </div>
-                  )}
-
-                  {activeForm === 'sales' && (
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Company Size</label>
-                      <select className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm">
-                        <option>1-10 employees</option>
-                        <option>11-50 employees</option>
-                        <option>51-200 employees</option>
-                        <option>201-1000 employees</option>
-                        <option>1000+ employees</option>
-                      </select>
-                    </div>
-                  )}
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2">
-                      {activeForm === 'demo' ? 'Additional Notes' : 'Project Details'}
-                    </label>
-                    <Textarea 
-                      placeholder={
-                        activeForm === 'demo' 
-                          ? "Tell us about your specific use case or any questions you have..."
-                          : "Describe your project requirements, timeline, and specific needs..."
-                      }
-                      rows={4}
-                    />
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full">
-                    {activeForm === 'demo' ? 'Schedule Demo' : 'Contact Sales Team'}
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-
-                  <p className="text-xs text-muted-foreground text-center">
-                    By submitting this form, you agree to our privacy policy and terms of service.
-                  </p>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Info Section */}
+        {/* Two Column Section - What You'll See & Get in Touch */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {/* What You'll See */}
           <motion.div
             initial={{ opacity: 1, x: 0 }}
             animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="space-y-8"
           >
-            {/* What You'll Get */}
-            <Card>
+            <Card className="h-full bg-white/10 backdrop-blur-md border-white/20 shadow-xl">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Zap className="w-5 h-5 text-primary" />
-                  <span>
-                    {activeForm === 'demo' ? 'What You\'ll See' : 'What You\'ll Get'}
-                  </span>
+                  <span>What You'll See</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  {(activeForm === 'demo' ? demoFeatures : salesBenefits).map((item, index) => (
+                  {demoFeatures.map((item, index) => (
                     <div key={index} className="flex items-center space-x-3">
                       <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                       <span className="text-sm">{item}</span>
@@ -253,9 +218,15 @@ export function ContactSection() {
                 </div>
               </CardContent>
             </Card>
+          </motion.div>
 
-            {/* Contact Info */}
-            <Card>
+          {/* Get in Touch */}
+          <motion.div
+            initial={{ opacity: 1, x: 0 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <Card className="h-full bg-white/10 backdrop-blur-md border-white/20 shadow-xl">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Headphones className="w-5 h-5 text-primary" />
@@ -268,14 +239,14 @@ export function ContactSection() {
                     <Phone className="w-4 h-4 text-primary" />
                     <div>
                       <div className="font-medium">Phone</div>
-                      <div className="text-sm text-muted-foreground">+1 (555) 123-4567</div>
+                      <div className="text-sm text-muted-foreground">+91 9876543210</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="w-4 h-4 text-primary" />
                     <div>
                       <div className="font-medium">Email</div>
-                      <div className="text-sm text-muted-foreground">hello@echoai.com</div>
+                      <div className="text-sm text-muted-foreground">connect@88gb.in</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -289,36 +260,7 @@ export function ContactSection() {
                     <Clock className="w-4 h-4 text-primary" />
                     <div>
                       <div className="font-medium">Response Time</div>
-                      <div className="text-sm text-muted-foreground">
-                        {activeForm === 'demo' ? 'Within 2 hours' : 'Within 30 minutes'}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Trust Signals */}
-            <Card className="bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
-              <CardContent className="p-6">
-                <div className="text-center">
-                  <Users className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <h3 className="font-bold mb-2">Trusted by 500+ Companies</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Join industry leaders who have transformed their customer engagement with ECHO AI.
-                  </p>
-                  <div className="flex justify-center space-x-4 text-xs">
-                    <div className="text-center">
-                      <div className="font-bold text-primary">95%</div>
-                      <div className="text-muted-foreground">Satisfaction</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="font-bold text-primary">24/7</div>
-                      <div className="text-muted-foreground">Support</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="font-bold text-primary">99.9%</div>
-                      <div className="text-muted-foreground">Uptime</div>
+                      <div className="text-sm text-muted-foreground">Within 2 hours</div>
                     </div>
                   </div>
                 </div>
@@ -326,6 +268,39 @@ export function ContactSection() {
             </Card>
           </motion.div>
         </div>
+
+        {/* Trusted by Banner - Full Width */}
+        <motion.div
+          initial={{ opacity: 1, y: 0 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
+        >
+          <Card className="w-full bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
+            <CardContent className="p-8">
+              <div className="text-center">
+                <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+                <h3 className="text-2xl font-bold mb-4">TRUSTED by 500+ COMPANIES</h3>
+                <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
+                  Join industry leaders who have transformed their customer engagement with ECHO AI.
+                </p>
+                <div className="flex justify-center space-x-8 text-sm">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary">95%</div>
+                    <div className="text-muted-foreground">Satisfaction</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary">24/7</div>
+                    <div className="text-muted-foreground">Support</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-primary">99.9%</div>
+                    <div className="text-muted-foreground">Uptime</div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </section>
   )
