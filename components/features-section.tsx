@@ -60,25 +60,25 @@ const features = [
     icon: MessageSquare,
     title: "Intelligent Conversations",
     description: "AI that understands context, emotions, and intent for meaningful customer interactions.",
-    stats: "95% accuracy rate"
+    stats: "95% accuracy"
   },
   {
     icon: Clock,
     title: "Real-time Processing",
     description: "Instant responses and actions with sub-second latency for seamless customer experience.",
-    stats: "< 500ms response time"
+    stats: "Instant Response"
   },
   {
     icon: Users,
     title: "Scalable Operations",
     description: "Handle thousands of concurrent conversations without compromising quality or performance.",
-    stats: "Unlimited concurrent calls"
+    stats: "Unlimited calls"
   },
   {
     icon: Eye,
     title: "Complete Visibility",
     description: "Monitor and analyze every conversation with detailed logs and performance metrics.",
-    stats: "100% conversation tracking"
+    stats: "100% tracking"
   }
 ]
 
@@ -262,11 +262,11 @@ export function FeaturesSection() {
               >
                 <Card className="h-full hover:border-primary/30 hover:shadow-lg transition-all duration-300 cursor-pointer group">
                   <CardContent className="p-6 space-y-4">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
                       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                         <feature.icon className="w-6 h-6 text-primary" />
                       </div>
-                      <div className="text-right">
+                      <div className="text-left">
                         <div className="text-2xl font-bold text-white">{feature.stats}</div>
                       </div>
                     </div>

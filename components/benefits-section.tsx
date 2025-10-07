@@ -144,42 +144,22 @@ export function BenefitsSection() {
                     transition: { duration: 0.3 }
                   }}
                 >
-                  {/* Animated Layer */}
-                  <div 
-                    className="w-80 h-40 rounded-lg border-2 shadow-2xl cursor-pointer transition-all duration-300"
-                    style={{ 
-                      backgroundColor: benefit.color,
-                      borderColor: '#3B82F6',
-                      boxShadow: '0 20px 40px rgba(59, 130, 246, 0.3)'
+                  {/* Animated Icon Only */}
+                  <motion.div
+                    animate={{ 
+                      rotate: [0, 360],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{ 
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear"
                     }}
                   >
-                    <div className="flex items-center justify-center h-full">
-                      <div className="text-center">
-                        <motion.div
-                          animate={{ 
-                            rotate: [0, 360],
-                            scale: [1, 1.1, 1]
-                          }}
-                          transition={{ 
-                            duration: 4,
-                            repeat: Infinity,
-                            ease: "linear"
-                          }}
-                        >
-                          <benefit.icon 
-                            className={`w-16 h-16 mx-auto mb-4 ${
-                              benefit.color === '#FFFFFF' ? 'text-gray-800' : 'text-white'
-                            }`} 
-                          />
-                        </motion.div>
-                        <h3 className={`text-2xl font-bold ${
-                          benefit.color === '#FFFFFF' ? 'text-gray-800' : 'text-white'
-                        }`}>
-                          {benefit.title}
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
+                    <benefit.icon 
+                      className="w-16 h-16 text-white" 
+                    />
+                  </motion.div>
 
                   {/* Floating Elements */}
                   <motion.div

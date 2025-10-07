@@ -10,6 +10,7 @@ interface Bar {
 export function VoicePulseBackground() {
   const [bars, setBars] = useState<Bar[]>([]);
   const [scrollSpeed, setScrollSpeed] = useState(0);
+  const [isOverFooter, setIsOverFooter] = useState(false);
   const lastScrollY = useRef(0);
   const lastScrollTime = useRef(Date.now());
 
@@ -28,7 +29,7 @@ export function VoicePulseBackground() {
     setBars(generatedBars);
   }, []);
 
-  // Track scroll speed
+  // Track scroll speed and footer overlap
   useEffect(() => {
     let rafId: number;
     let timeoutId: NodeJS.Timeout;
@@ -44,6 +45,32 @@ export function VoicePulseBackground() {
         const speed = Math.min((scrollDiff / timeDiff) * 10, 1);
         setScrollSpeed(speed);
       }
+
+      // Check if voice pulse is overlapping with footer or customization section
+      const footer = document.querySelector('footer');
+      const customizationSection = document.querySelector('#customization');
+      
+      let isOverlapping = false;
+      
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const voicePulseY = viewportHeight / 2; // Voice pulse is at 50vh
+        
+        // Check if voice pulse center is within footer bounds
+        isOverlapping = voicePulseY >= footerRect.top && voicePulseY <= footerRect.bottom;
+      }
+      
+      if (customizationSection && !isOverlapping) {
+        const customizationRect = customizationSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const voicePulseY = viewportHeight / 2;
+        
+        // Check if voice pulse center is within customization section bounds
+        isOverlapping = voicePulseY >= customizationRect.top && voicePulseY <= customizationRect.bottom;
+      }
+      
+      setIsOverFooter(isOverlapping);
 
       lastScrollY.current = currentScrollY;
       lastScrollTime.current = currentTime;
@@ -81,6 +108,8 @@ export function VoicePulseBackground() {
           right: '0',
           transform: 'translateY(-50%)',
           zIndex: 5,
+          filter: isOverFooter ? 'blur(4px) brightness(0.3)' : 'blur(1px) brightness(0.6)',
+          transition: 'filter 0.3s ease-out',
         }}
       >
         {bars.map((bar) => {
@@ -88,15 +117,19 @@ export function VoicePulseBackground() {
           const heightIncrease = 1 + (0.05 + scrollSpeed * 0.25);
           const dynamicHeight = bar.baseHeight * heightIncrease;
           
+          // Make bars very dull and muted
+          const glowIntensity = isOverFooter ? 0.05 : 0.15;
+          const shadowIntensity = isOverFooter ? 0.02 : 0.08;
+          
           return (
             <div
               key={bar.id}
               style={{
                 width: '8px',
                 height: `${dynamicHeight}px`,
-                background: 'linear-gradient(180deg, rgba(96, 165, 250, 0.4) 0%, rgba(96, 165, 250, 0.9) 50%, rgba(96, 165, 250, 0.4) 100%)',
+                background: 'linear-gradient(180deg, rgba(96, 165, 250, 0.2) 0%, rgba(96, 165, 250, 0.4) 50%, rgba(96, 165, 250, 0.2) 100%)',
                 borderRadius: '999px',
-                boxShadow: '0 0 20px rgba(96, 165, 250, 0.5), 0 0 40px rgba(96, 165, 250, 0.3)',
+                boxShadow: `0 0 20px rgba(96, 165, 250, ${glowIntensity}), 0 0 40px rgba(96, 165, 250, ${shadowIntensity})`,
                 transition: `all ${scrollSpeed > 0 ? '100ms' : '300ms'} ease-out`,
               }}
             />
