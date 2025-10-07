@@ -1,4 +1,4 @@
-// File: C:\Users\Win11\OneDrive\Desktop\EchoAI\echoAI\app\page.tsx
+// File: C:\Users\Win11\OneDrive\Desktop\echoAI\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

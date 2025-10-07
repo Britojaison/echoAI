@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Phone, Mail, MapPin, Twitter, Linkedin, Github } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -34,15 +35,19 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-background border-t border-border">
+    <footer className="bg-black/95 backdrop-blur-2xl border-t border-white/10">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">E</span>
-              </div>
+              <Image
+                src="/echo-logo.png"
+                alt="ECHO AI Logo"
+                width={42}
+                height={42}
+                className="w-12 h-12"
+              />
               <span className="text-xl font-bold gradient-text">ECHO AI</span>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-md">
@@ -55,15 +60,15 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 9876543210</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4" />
-                <span>hello@echoai.com</span>
+                <span>connect@88gb.in</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4" />
-                <span>San Francisco, CA</span>
+                <span>HSR, Bangalore</span>
               </div>
             </div>
 
