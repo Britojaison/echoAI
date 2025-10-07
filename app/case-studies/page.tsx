@@ -180,19 +180,43 @@ function CaseStudiesContent() {
         className="pt-32 pb-16 bg-gradient-to-br from-blue-600 to-purple-700"
       >
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6">
-              {selectedCase.industry}
+          <div className="max-w-[70%] mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Left Content */}
+              <div className="text-left">
+                <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6">
+                  {selectedCase.industry}
+                </div>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+                  {selectedCase.hero.title}
+                </h1>
+                <p className="text-lg md:text-xl text-blue-100 mb-6">
+                  {selectedCase.hero.subtitle}
+                </p>
+                <p className="text-base text-white/90">
+                  {selectedCase.hero.description}
+                </p>
+              </div>
+
+              {/* Right Content - Brand Logo */}
+              <div className="text-right flex justify-end">
+                <div className="w-64 h-64 md:w-80 md:h-80 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                  {selectedCase.id === 'creative-orbit' ? (
+                    <img 
+                      src="/creative_orbit.svg" 
+                      alt="Creative Orbit Logo" 
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <img 
+                      src="/cinco_logo.png" 
+                      alt="Cinco Logo" 
+                      className="w-full h-full object-contain"
+                    />
+                  )}
+                </div>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              {selectedCase.hero.title}
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8">
-              {selectedCase.hero.subtitle}
-            </p>
-            <p className="text-lg text-white/90 max-w-3xl mx-auto">
-              {selectedCase.hero.description}
-            </p>
           </div>
         </div>
       </motion.section>
