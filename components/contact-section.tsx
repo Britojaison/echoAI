@@ -128,7 +128,7 @@ export function ContactSection() {
                 <span>Book a DEMO</span>
               </CardTitle>
               <p className="text-muted-foreground">
-                Schedule a personalized demonstration of ECHO AI's capabilities.
+                Schedule a personalized demonstration of ECHO AI&apos;s capabilities.
               </p>
             </CardHeader>
             <CardContent>
@@ -204,7 +204,7 @@ export function ContactSection() {
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Zap className="w-5 h-5 text-primary" />
-                  <span>What You'll See</span>
+                  <span>What You&apos;ll See</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
