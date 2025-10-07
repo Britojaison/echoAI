@@ -177,43 +177,45 @@ function CaseStudiesContent() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="pt-32 pb-16 bg-gradient-to-br from-blue-600 to-purple-700"
+        className=" pt-14 pb-16 bg-white"
       >
         <div className="container mx-auto px-4">
-          <div className="max-w-[70%] mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Left Content */}
-              <div className="text-left">
-                <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6">
-                  {selectedCase.industry}
+          <div className="max-w-[80%] mx-auto">
+            <div className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl p-16">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                {/* Left Content */}
+                <div className="text-left">
+                  <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6">
+                    {selectedCase.industry}
+                  </div>
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+                    {selectedCase.hero.title}
+                  </h1>
+                  <p className="text-xl md:text-2xl text-blue-100 mb-6">
+                    {selectedCase.hero.subtitle}
+                  </p>
+                  <p className="text-lg text-white/90">
+                    {selectedCase.hero.description}
+                  </p>
                 </div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                  {selectedCase.hero.title}
-                </h1>
-                <p className="text-lg md:text-xl text-blue-100 mb-6">
-                  {selectedCase.hero.subtitle}
-                </p>
-                <p className="text-base text-white/90">
-                  {selectedCase.hero.description}
-                </p>
-              </div>
 
-              {/* Right Content - Brand Logo */}
-              <div className="text-right flex justify-end">
-                <div className="w-64 h-64 md:w-80 md:h-80 flex items-center justify-center bg-white/10 backdrop-blur-sm rounded-2xl p-8">
-                  {selectedCase.id === 'creative-orbit' ? (
-                    <img 
-                      src="/creative_orbit.svg" 
-                      alt="Creative Orbit Logo" 
-                      className="w-full h-full object-contain"
-                    />
-                  ) : (
-                    <img 
-                      src="/cinco_logo.png" 
-                      alt="Cinco Logo" 
-                      className="w-full h-full object-contain"
-                    />
-                  )}
+                {/* Right Content - Brand Logo */}
+                <div className="text-right flex justify-end">
+                  <div className="w-96 h-96 md:w-[28rem] md:h-[28rem] flex items-center justify-center p-8">
+                    {selectedCase.id === 'creative-orbit' ? (
+                      <img 
+                        src="/creative_orbit.svg" 
+                        alt="Creative Orbit Logo" 
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <img 
+                        src="/cinco_logo.png" 
+                        alt="Cinco Logo" 
+                        className="w-full h-full object-contain"
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -226,31 +228,39 @@ function CaseStudiesContent() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="py-16 bg-white"
+        className="py-16 bg-white relative"
       >
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  {selectedCase.challenge.title}
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  {selectedCase.challenge.description}
-                </p>
+            <div className="grid md:grid-cols-2 gap-12 items-start relative">
+              {/* Left side with gradient background - 70% width */}
+              <div className="md:col-span-1 relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-800 rounded-2xl"></div>
+                <div className="relative z-10 p-8 text-white">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                    {selectedCase.challenge.title}
+                  </h2>
+                  <p className="text-lg text-blue-100 leading-relaxed">
+                    {selectedCase.challenge.description}
+                  </p>
+                </div>
               </div>
-              <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Key Challenges:</h3>
-                <ul className="space-y-4">
-                  {selectedCase.challenge.points.map((point, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="mt-1 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                        <div className="w-2 h-2 rounded-full bg-red-500" />
-                      </div>
-                      <span className="text-gray-700">{point}</span>
-                    </li>
-                  ))}
-                </ul>
+              
+              {/* Right side content */}
+              <div className="md:col-span-1">
+                <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">Key Challenges:</h3>
+                  <ul className="space-y-4">
+                    {selectedCase.challenge.points.map((point, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                          <div className="w-2 h-2 rounded-full bg-red-500" />
+                        </div>
+                        <span className="text-gray-700">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
