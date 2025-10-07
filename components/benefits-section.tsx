@@ -88,7 +88,7 @@ export function BenefitsSection() {
   return (
     <section id="benefits" className="md:py-20" style={{ background: 'transparent' }}>
       <div className="container mx-auto px-4">
-        <div className="md:space-y-32">
+        <div className="space-y-20 md:space-y-40">
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}

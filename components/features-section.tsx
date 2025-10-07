@@ -223,7 +223,7 @@ export function FeaturesSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 + 0.5 }}
                   viewport={{ once: false, margin: "-100px" }}
-                  className={`relative flex justify-center items-center h-48 sm:h-56 md:h-64 ${index % 2 === 1 ? 'md:col-start-1' : ''}`}
+                  className={`relative hidden sm:flex justify-center items-center h-48 sm:h-56 md:h-64 ${index % 2 === 1 ? 'md:col-start-1' : ''}`}
                 >
                   <motion.div
                     className="relative"
