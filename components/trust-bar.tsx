@@ -42,7 +42,7 @@ export function TrustBar() {
   }, [])
 
   return (
-    <section id="trust-bar" className="py-16 mt-40">
+    <section id="trust-bar" className="py-12 md:py-16 mt-20 md:mt-40">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 1 }}

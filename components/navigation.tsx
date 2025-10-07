@@ -56,8 +56,9 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
             <Image
               src="/echo-logo.png"
               alt="ECHO AI Logo"
-              width={100}
-              height={100}
+              width={80}
+              height={80}
+              className="w-16 h-16 sm:w-20 sm:h-20"
             />
           </Link>
 
@@ -124,7 +125,7 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
           </div>
 
           {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             <Button variant="ghost" size="sm" asChild>
               <Link href="#contact" className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
