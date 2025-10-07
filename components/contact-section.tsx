@@ -71,11 +71,11 @@ export function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Ready to Get{" "}
             <span className="gradient-text">Started</span>?
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Choose how you&apos;d like to connect with us. Book a demo to see ECHO AI in action, 
             or talk to our sales team for a personalized consultation.
           </p>
@@ -193,7 +193,7 @@ export function ContactSection() {
         </motion.div>
 
         {/* Two Column Section - What You'll See & Get in Touch */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12">
           {/* What You'll See */}
           <motion.div
             initial={{ opacity: 1, x: 0 }}
@@ -279,11 +279,11 @@ export function ContactSection() {
             <CardContent className="p-8">
               <div className="text-center">
                 <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4">TRUSTED by 500+ COMPANIES</h3>
-                <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
+                <h3 className="text-xl sm:text-2xl font-bold mb-4">TRUSTED by 500+ COMPANIES</h3>
+                <p className="text-base sm:text-lg text-muted-foreground mb-6 max-w-4xl mx-auto">
                   Join industry leaders who have transformed their customer engagement with ECHO AI.
                 </p>
-                <div className="flex justify-center space-x-8 text-sm">
+                <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-sm">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-primary">95%</div>
                     <div className="text-muted-foreground">Satisfaction</div>

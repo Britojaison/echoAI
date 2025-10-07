@@ -113,32 +113,23 @@ export function CustomizationSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Complete{" "}
             <span className="gradient-text">Customization</span>{" "}
             for Your Brand
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-6xl mx-auto leading-relaxed">
             Every conversation should feel authentically yours. Customize every aspect 
             of your AI voice agents to align perfectly with your brand and business needs.
           </p>
         </motion.div>
 
         {/* Creative Grid Layout for Four Customization Points */}
-        <div className="relative max-w-6xl mx-auto">
+        <div className="relative max-w-8xl mx-auto">
 
           {/* Four Customization Cards in Diamond Formation */}
-          <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 max-w-8xl mx-auto">
             {customizationFeatures.map((feature, index) => {
-              // Calculate position for diamond formation
-              const positions = [
-                { row: 1, col: 1, transform: "translate(-20px, -30px)" }, // Top-left
-                { row: 1, col: 2, transform: "translate(20px, -30px)" },  // Top-right
-                { row: 2, col: 1, transform: "translate(-20px, 30px)" },  // Bottom-left
-                { row: 2, col: 2, transform: "translate(20px, 30px)" }    // Bottom-right
-              ]
-              
-              const position = positions[index]
               const delay = 0.4 + index * 0.15
 
               return (
@@ -162,10 +153,7 @@ export function CustomizationSection() {
                     type: "spring",
                     stiffness: 100
                   }}
-                  className={`relative ${position.row === 1 ? 'row-start-1' : 'row-start-2'} ${
-                    position.col === 1 ? 'col-start-1' : 'col-start-2'
-                  }`}
-                  style={{ transform: position.transform }}
+                  className="relative"
                   whileHover={{ 
                     scale: 1.05,
                     rotateY: 5,
@@ -174,30 +162,30 @@ export function CustomizationSection() {
                   }}
                 >
                   <motion.div
-                    className="p-6 rounded-2xl border border-border/50 hover:border-primary/30 hover:bg-card/50 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer h-full"
+                    className="p-4 sm:p-6 rounded-2xl border border-border/50 hover:border-primary/30 hover:bg-card/50 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer h-full"
                     whileHover={{ y: -5 }}
                   >
-                    {/* Floating Icon */}
-                    <motion.div
-                      className="absolute -top-4 left-1/2 transform -translate-x-1/2"
-                      animate={{ 
-                        y: [0, -8, 0],
-                        rotate: [0, 5, 0]
-                      }}
-                      transition={{ 
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: index * 0.5
-                      }}
-                    >
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg bg-muted text-muted-foreground">
-                        <feature.icon className="w-6 h-6" />
-                      </div>
-                    </motion.div>
+                    {/* Icon */}
+                    <div className="flex justify-center mb-4">
+                      <motion.div
+                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shadow-lg bg-muted text-muted-foreground"
+                        animate={{ 
+                          y: [0, -4, 0],
+                          rotate: [0, 3, 0]
+                        }}
+                        transition={{ 
+                          duration: 3,
+                          repeat: Infinity,
+                          delay: index * 0.5
+                        }}
+                      >
+                        <feature.icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                      </motion.div>
+                    </div>
 
-                    <div className="pt-6 space-y-4">
-                      <h3 className="text-xl font-bold text-center">{feature.title}</h3>
-                      <p className="text-muted-foreground text-sm text-center leading-relaxed">
+                    <div className="space-y-3 sm:space-y-4">
+                      <h3 className="text-lg sm:text-xl font-bold text-center">{feature.title}</h3>
+                      <p className="text-muted-foreground text-sm sm:text-base text-center leading-relaxed">
                         {feature.description}
                       </p>
                       
@@ -206,7 +194,7 @@ export function CustomizationSection() {
                         {feature.features.slice(0, 2).map((item, idx) => (
                           <motion.span
                             key={idx}
-                            className="px-3 py-1 bg-muted/50 rounded-full text-xs text-muted-foreground"
+                            className="px-2 sm:px-3 py-1 bg-muted/50 rounded-full text-xs text-muted-foreground"
                             whileHover={{ scale: 1.05 }}
                           >
                             {item}
@@ -221,27 +209,29 @@ export function CustomizationSection() {
             })}
           </div>
 
-          {/* Floating Particles */}
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-primary/20 rounded-full"
-              style={{
-                top: `${20 + (i * 10)}%`,
-                left: `${15 + (i * 10)}%`,
-              }}
-              animate={{
-                y: [0, -20, 0],
-                opacity: [0.3, 0.8, 0.3],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                delay: i * 0.5
-              }}
-            />
-          ))}
+          {/* Floating Particles - Hidden on mobile for better performance */}
+          <div className="hidden sm:block">
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-primary/20 rounded-full"
+                style={{
+                  top: `${20 + (i * 10)}%`,
+                  left: `${15 + (i * 10)}%`,
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.3, 0.8, 0.3],
+                  scale: [1, 1.2, 1]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  delay: i * 0.5
+                }}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Bottom CTA */}
@@ -251,9 +241,9 @@ export function CustomizationSection() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center mt-16"
         >
-          <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
+          <Card className="max-w-8xl mx-auto bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
             <CardContent className="p-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <div className="text-center">
                   <Users className="w-8 h-8 text-primary mx-auto mb-3" />
                   <h4 className="font-semibold mb-2">Brand Consistency</h4>

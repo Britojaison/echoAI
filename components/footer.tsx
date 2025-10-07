@@ -37,7 +37,7 @@ export function Footer() {
   return (
     <footer className="bg-black/95 backdrop-blur-2xl border-t border-white/10">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
@@ -48,7 +48,7 @@ export function Footer() {
                 height={42}
                 className="w-12 h-12"
               />
-              <span className="text-xl font-bold gradient-text">ECHO AI</span>
+              <span className="text-lg sm:text-xl font-bold gradient-text">ECHO AI</span>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-md">
               Automate customer interactions with AI voice calling agents. 
@@ -159,19 +159,19 @@ export function Footer() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="border-t border-border mt-12 pt-8">
-          <div className="max-w-md">
+        <div className="border-t border-border mt-8 sm:mt-12 pt-6 sm:pt-8">
+          <div className="max-w-md mx-auto sm:mx-0">
             <h3 className="font-semibold mb-2">Stay Updated</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Get the latest updates on AI voice technology and product features.
             </p>
-            <div className="flex space-x-2">
+            <div className="flex flex-col sm:flex-row gap-2 sm:space-x-2">
               <input
                 type="email"
                 placeholder="Enter your email"
                 className="flex-1 px-3 py-2 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
               />
-              <Button size="sm">Subscribe</Button>
+              <Button size="sm" className="w-full sm:w-auto">Subscribe</Button>
             </div>
           </div>
         </div>
