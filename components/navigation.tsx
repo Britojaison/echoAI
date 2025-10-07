@@ -4,12 +4,17 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Phone, Calendar } from "lucide-react"
+import { Menu, X, Phone, Calendar, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-export function Navigation() {
+interface NavigationProps {
+  lightTheme?: boolean
+}
+
+export function Navigation({ lightTheme = false }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isCaseStudiesOpen, setIsCaseStudiesOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,14 +29,22 @@ export function Navigation() {
     { name: "Benefits", href: "#benefits" },
     { name: "Customization", href: "#customization" },
     { name: "How It Works", href: "#how-it-works" },
-    { name: "Case Studies", href: "#case-studies" },
+  ]
+
+  const caseStudies = [
+    { name: "Creative Orbit", href: "/case-studies?study=creative-orbit" },
+    { name: "Cinco", href: "/case-studies?study=cinco" },
   ]
 
   return (
     <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled
+        lightTheme
+          ? isScrolled
+            ? "bg-white/90 backdrop-blur-md border-b border-gray-200"
+            : "bg-white border-b border-gray-200"
+          : isScrolled
           ? "bg-background/80 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       )}
@@ -55,11 +68,60 @@ export function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className={cn(
+                  "transition-colors duration-200",
+                  lightTheme
+                    ? "text-gray-600 hover:text-gray-900"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
               >
                 {item.name}
               </Link>
             ))}
+            
+            {/* Case Studies Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsCaseStudiesOpen(true)}
+              onMouseLeave={() => setIsCaseStudiesOpen(false)}
+            >
+              <button className={cn(
+                "flex items-center gap-1 transition-colors duration-200",
+                lightTheme
+                  ? "text-gray-600 hover:text-gray-900"
+                  : "text-muted-foreground hover:text-foreground"
+              )}>
+                Case Studies
+                <ChevronDown className={cn(
+                  "w-4 h-4 transition-transform duration-200",
+                  isCaseStudiesOpen && "rotate-180"
+                )} />
+              </button>
+              
+              {isCaseStudiesOpen && (
+                <div className={cn(
+                  "absolute top-full left-0 mt-2 w-48 rounded-lg shadow-lg overflow-hidden",
+                  lightTheme
+                    ? "bg-white border border-gray-200"
+                    : "bg-background/95 backdrop-blur-md border border-border"
+                )}>
+                  {caseStudies.map((study) => (
+                    <Link
+                      key={study.name}
+                      href={study.href}
+                      className={cn(
+                        "block px-4 py-3 transition-colors duration-200",
+                        lightTheme
+                          ? "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                          : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                      )}
+                    >
+                      {study.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Desktop CTA Buttons */}
@@ -80,7 +142,10 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2"
+            className={cn(
+              "md:hidden p-2",
+              lightTheme ? "text-gray-900" : "text-foreground"
+            )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
@@ -93,18 +158,54 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border">
+          <div className={cn(
+            "md:hidden border-t",
+            lightTheme
+              ? "bg-white/95 backdrop-blur-md border-gray-200"
+              : "bg-background/95 backdrop-blur-md border-border"
+          )}>
             <div className="px-4 py-6 space-y-4">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  className={cn(
+                    "block transition-colors duration-200",
+                    lightTheme
+                      ? "text-gray-600 hover:text-gray-900"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Case Studies */}
+              <div className="space-y-2">
+                <div className={cn(
+                  "font-medium text-sm",
+                  lightTheme ? "text-gray-600" : "text-muted-foreground"
+                )}>
+                  Case Studies
+                </div>
+                {caseStudies.map((study) => (
+                  <Link
+                    key={study.name}
+                    href={study.href}
+                    className={cn(
+                      "block pl-4 transition-colors duration-200",
+                      lightTheme
+                        ? "text-gray-600 hover:text-gray-900"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {study.name}
+                  </Link>
+                ))}
+              </div>
+              
               <div className="pt-4 space-y-3">
                 <Button variant="ghost" size="sm" className="w-full" asChild>
                   <Link href="#contact" className="flex items-center justify-center space-x-2">
