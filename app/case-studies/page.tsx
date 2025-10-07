@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Inter } from 'next/font/google'
 import { ChevronRight, Phone, Users, TrendingUp, Clock, CheckCircle, Quote } from 'lucide-react'
@@ -148,7 +148,7 @@ const caseStudies = [
   }
 ]
 
-export default function CaseStudiesPage() {
+function CaseStudiesContent() {
   const searchParams = useSearchParams()
   const studyParam = searchParams.get('study')
   
@@ -400,6 +400,21 @@ export default function CaseStudiesPage() {
         </div>
       </footer>
     </div>
+  )
+}
+
+export default function CaseStudiesPage() {
+  return (
+    <Suspense fallback={
+      <div className={`${inter.className} min-h-screen bg-white flex items-center justify-center`}>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading case studies...</p>
+        </div>
+      </div>
+    }>
+      <CaseStudiesContent />
+    </Suspense>
   )
 }
 
