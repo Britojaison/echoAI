@@ -7,11 +7,11 @@ import { Phone } from "lucide-react"
 
 export function HeroSection() {
   return (
-    <section className="relative h-[50vh] flex items-center justify-center"
+    <section className="relative h-[60vh] flex items-end justify-center "
       style={{ background: 'transparent' }}
     >
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-80 items-center max-w-12xl mx-auto lg:ml-5">
           {/* Left Column - Headline */}
           <motion.div
             initial={{ opacity: 1, x: 0 }}
@@ -44,7 +44,7 @@ export function HeroSection() {
               />
               <Button 
                 size="lg" 
-                className="h-12 bg-red-600 hover:bg-red-700 text-white px-8 font-medium"
+                className="h-12 bg-white hover:bg-gray-100 text-blue-600 px-8 font-medium"
               >
                 Let&apos;s Talk
               </Button>

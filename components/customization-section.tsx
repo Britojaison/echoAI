@@ -118,17 +118,17 @@ export function CustomizationSection() {
             <span className="gradient-text">Customization</span>{" "}
             for Your Brand
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-6xl mx-auto leading-relaxed">
             Every conversation should feel authentically yours. Customize every aspect 
             of your AI voice agents to align perfectly with your brand and business needs.
           </p>
         </motion.div>
 
         {/* Creative Grid Layout for Four Customization Points */}
-        <div className="relative max-w-6xl mx-auto">
+        <div className="relative max-w-8xl mx-auto">
 
           {/* Four Customization Cards in Diamond Formation */}
-          <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 gap-10 max-w-8xl mx-auto">
             {customizationFeatures.map((feature, index) => {
               // Calculate position for diamond formation
               const positions = [
@@ -251,7 +251,7 @@ export function CustomizationSection() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center mt-16"
         >
-          <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
+          <Card className="max-w-8xl mx-auto bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
             <CardContent className="p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
