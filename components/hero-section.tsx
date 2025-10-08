@@ -36,15 +36,15 @@ export function HeroSection() {
               <p className="text-lg sm:text-xl text-white font-medium">Have ECHO AI give you a call.</p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="flex flex-col gap-3 sm:gap-4">
               <Input
                 type="tel"
                 placeholder="Your Phone Number"
-                className="flex-1 h-12 bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-white/50"
+                className="w-full h-12 bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-white/50"
               />
               <Button 
                 size="lg" 
-                className="h-12 bg-white hover:bg-gray-100 text-blue-600 px-8 font-medium"
+                className="w-full h-12 bg-white hover:bg-gray-100 text-blue-600 font-medium"
               >
                 Let&apos;s Talk
               </Button>

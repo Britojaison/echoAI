@@ -200,9 +200,22 @@ export function CaseStudiesSection() {
                   {/* Solution */}
                   <div className="mb-6">
                     <h4 className="font-semibold mb-2 text-sm">Solution</h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                       {study.solution}
                     </p>
+                    {/* Video */}
+                    <div className="w-full">
+                      <video 
+                        src="/video2.mp4" 
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-auto rounded-lg shadow-md"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
                   </div>
 
                   {/* Results */}
