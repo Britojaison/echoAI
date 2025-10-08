@@ -42,7 +42,7 @@ export function TrustBar() {
   }, [])
 
   return (
-    <section id="trust-bar" className="py-12 md:py-16 mt-20 md:mt-40">
+    <section id="trust-bar" className="pt-12 pb-40 md:pt-16 md:pb-24 mt-20 md:mt-40">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 1 }}
@@ -143,22 +143,22 @@ export function TrustBar() {
           initial={{ opacity: 1, y: 0 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 text-center"
+          className="grid grid-cols-4 gap-4 sm:gap-8 mt-12 text-center"
         >
           <div>
-            <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">50+</div>
+            <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text mb-1">50+</div>
             <div className="text-sm text-muted-foreground">Companies</div>
           </div>
           <div>
-            <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">1M+</div>
+            <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text mb-1">1M+</div>
             <div className="text-sm text-muted-foreground">Calls Made</div>
           </div>
           <div>
-            <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">95%</div>
+            <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text mb-1">95%</div>
             <div className="text-sm text-muted-foreground">Satisfaction</div>
           </div>
           <div>
-            <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">24/7</div>
+            <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text mb-1">24/7</div>
             <div className="text-sm text-muted-foreground">Support</div>
           </div>
         </motion.div>

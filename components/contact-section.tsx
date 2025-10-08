@@ -283,7 +283,7 @@ export function ContactSection() {
                 <p className="text-base sm:text-lg text-muted-foreground mb-6 max-w-4xl mx-auto">
                   Join industry leaders who have transformed their customer engagement with ECHO AI.
                 </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 text-sm">
+                <div className="flex flex-row flex-wrap justify-center gap-6 sm:gap-8 text-sm">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-primary">95%</div>
                     <div className="text-muted-foreground">Satisfaction</div>
