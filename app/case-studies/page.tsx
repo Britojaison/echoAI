@@ -95,7 +95,7 @@ const caseStudies = [
       ]
     },
     solution: {
-      title: 'The ECHO AI Solution',
+      title: 'The Echo AI Solution',
       description: 'Cinco deployed ECHO AI across all 25 locations to handle reservation calls, table availability checks, and customer inquiries. The system was integrated with their existing reservation management platform.',
       features: [
         {
