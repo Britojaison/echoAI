@@ -23,12 +23,10 @@ const caseStudies = [
     },
     challenge: {
       title: 'The Challenge',
-      description: 'Creative Orbit managed over 100+ active clients across various industries. Their team spent countless hours on routine follow-up calls, project status updates, and feedback collection. This manual process was time-consuming and took away from their core creative work.',
-      points: [
-        'High volume of routine client check-in calls',
-        'Inconsistent feedback collection across projects',
-        'Team burnout from repetitive communication tasks',
-        'Difficulty scaling client communication with growth'
+      paragraphs: [
+        'Creative Orbit managed over 100+ active clients across various industries. Their team spent countless hours on routine follow-up calls, project status updates, and feedback collection. This manual process was time-consuming and took away from their core creative work.',
+        'High volume of routine client check-in calls created significant bottlenecks in their workflow. The team struggled with inconsistent feedback collection across projects, leading to gaps in client communication and delayed project deliveries.',
+        'Team burnout from repetitive communication tasks became a growing concern, making it increasingly difficult to scale client communication as the agency continued to grow. The challenge was finding a solution that could automate routine communications while maintaining the personalized touch that Creative Orbit was known for.'
       ]
     },
     solution: {
@@ -89,13 +87,11 @@ const caseStudies = [
       description: 'Cinco, a rapidly growing restaurant chain with 25 locations, implemented ECHO AI to manage their high-volume reservation system, enabling them to handle peak hours efficiently while maintaining their commitment to customer service.'
     },
     challenge: {
-      title: 'The Challenge',
-      description: 'With 25 locations and growing, Cinco faced overwhelming call volumes during peak hours. Their staff struggled to answer phones while serving in-house guests, leading to missed reservations and frustrated customers.',
-      points: [
-        'Missed calls during dinner rush hours (6-9 PM)',
-        'Staff overwhelmed managing both calls and in-person service',
-        'Inconsistent reservation information across locations',
-        'Limited ability to handle multilingual customer requests'
+      title: 'Handling Peak-Hour Call Overload',
+      paragraphs: [
+        'Cinco is a rapidly expanding real estate brand with a growing client base. As the company scaled, it began facing challenges in managing heavy call volumes during peak business hours.',
+        'Between 6 and 9 PM, when client inquiries peaked, staff were overwhelmed trying to manage phone calls and in-person meetings. This led to missed calls, lost opportunities, and delayed follow-ups, impacting customer satisfaction and sales.',
+        'The challenge grew with limited multilingual support, restricting Cinco’s ability to provide a seamless, personalized experience. To solve this, Cinco looked for a scalable solution to automate routine calls, ensure consistent service, and boost client engagement across locations.'
       ]
     },
     solution: {
@@ -231,39 +227,27 @@ function CaseStudiesContent() {
         className="py-16 bg-white relative"
       >
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-[85%] mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-start relative">
-              {/* Left side with gradient background */}
-              <div className="md:col-span-1 relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-800 rounded-2xl"></div>
-                <div className="relative z-10 p-8 text-white">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                    {selectedCase.challenge.title}
-                  </h2>
-                  <p className="text-lg text-blue-100 leading-relaxed mb-8">
-                    {selectedCase.challenge.description}
-                  </p>
-                  
-                  {/* Key Challenges moved inside the gradient box */}
-                  <div className="mt-8">
-                    <h3 className="text-xl font-bold text-white mb-6">Key Challenges:</h3>
-                    <ul className="space-y-4">
-                      {selectedCase.challenge.points.map((point, index) => (
-                        <li key={index} className="flex items-start gap-3">
-                          <div className="mt-1 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                            <div className="w-2 h-2 rounded-full bg-white" />
-                          </div>
-                          <span className="text-blue-100">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              {/* Left side content */}
+              <div className="md:col-span-1 p-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+                  {selectedCase.challenge.title}
+                </h2>
+                
+                {/* Challenge paragraphs */}
+                <div className="space-y-6">
+                  {selectedCase.challenge.paragraphs.map((paragraph, index) => (
+                    <p key={index} className="text-lg text-gray-600 leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
               </div>
               
               {/* Right side with Frame 3.png image */}
               <div className="md:col-span-1 flex justify-center items-center">
-                <div className="w-full max-w-md">
+                <div className="w-full max-w-lg">
                   <img 
                     src="/Frame 3.png" 
                     alt="Challenge Illustration" 
