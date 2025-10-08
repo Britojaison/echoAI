@@ -26,7 +26,7 @@ const caseStudies = [
       paragraphs: [
         'Cinco is a rapidly expanding real estate brand with a growing client base. As the company scaled, it began facing challenges in managing heavy call volumes during peak business hours.',
         'Between 6 and 9 PM, when client inquiries peaked, staff were overwhelmed trying to manage phone calls and in-person meetings. This led to missed calls, lost opportunities, and delayed follow-ups, impacting customer satisfaction and sales.',
-        'The challenge grew with limited multilingual support, restricting Cinco’s ability to provide a seamless, personalized experience. To solve this, Cinco looked for a scalable solution to automate routine calls, ensure consistent service, and boost client engagement across locations.'
+        'The challenge grew with limited multilingual support, restricting Cinco\'s ability to provide a seamless, personalized experience. To solve this, Cinco looked for a scalable solution to automate routine calls, ensure consistent service, and boost client engagement across locations.'
       ]
     },
     solution: {
@@ -156,7 +156,7 @@ const caseStudies = [
       paragraphs: [
         'Cinco is a rapidly expanding real estate brand with a growing client base. As the company scaled, it began facing challenges in managing heavy call volumes during peak business hours.',
         'Between 6 and 9 PM, when client inquiries peaked, staff were overwhelmed trying to manage phone calls and in-person meetings. This led to missed calls, lost opportunities, and delayed follow-ups, impacting customer satisfaction and sales.',
-        'The challenge grew with limited multilingual support, restricting Cinco's ability to provide a seamless, personalized experience. To solve this, Cinco looked for a scalable solution to automate routine calls, ensure consistent service, and boost client engagement across locations.'
+        'The challenge grew with limited multilingual support, restricting Cinco\'s ability to provide a seamless, personalized experience. To solve this, Cinco looked for a scalable solution to automate routine calls, ensure consistent service, and boost client engagement across locations.'
       ]
     },
     solution: {
@@ -451,7 +451,7 @@ function CaseStudiesContent() {
                 Results That Matter
             </h2>
               <p className="text-xl md:text-2xl text-[#1A2B47] max-w-4xl mx-auto leading-relaxed opacity-80" style={{ lineHeight: '1.7' }}>
-                Measurable outcomes that demonstrate ECHO AI's impact on your business
+                Measurable outcomes that demonstrate ECHO AI&apos;s impact on your business
               </p>
             </div>
 
@@ -577,7 +577,7 @@ function CaseStudiesContent() {
                 Business Impact
               </h2>
               <p className="text-xl text-white/80 max-w-3xl mx-auto">
-                Measurable outcomes that demonstrate ECHO AI's transformative effect
+                Measurable outcomes that demonstrate ECHO AI&apos;s transformative effect
               </p>
             </div>
 
