@@ -261,63 +261,112 @@ function CaseStudiesContent() {
                 </div>
               </div>
               
-              {/* Right side with Frame 3.png image */}
-              <div className="md:col-span-1 flex justify-center items-center">
-                <div className="w-full max-w-md">
-                  <img 
-                    src="/Frame 3.png" 
-                    alt="Challenge Illustration" 
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-              </div>
+               {/* Right side with image */}
+               <div className="md:col-span-1 flex justify-center items-center">
+                 <div className="w-full max-w-md">
+                   <img 
+                     src="/challenge.png" 
+                     alt="Challenge Illustration" 
+                     className="w-full h-auto rounded-lg shadow-lg object-contain"
+                   />
+                 </div>
+               </div>
             </div>
           </div>
         </div>
       </motion.section>
 
-      {/* Solution Section */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="py-16 bg-gradient-to-br from-gray-50 to-blue-50"
-      >
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                {selectedCase.solution.title}
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                {selectedCase.solution.description}
-              </p>
-            </div>
+       {/* Solution Section */}
+       <motion.section 
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1 }}
+         transition={{ delay: 0.3 }}
+         className="py-24 bg-white"
+       >
+         <div className="container mx-auto px-4">
+           <div className="max-w-7xl mx-auto">
+             {/* Section Title */}
+             <div className="text-center mb-20">
+               <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-[#1A2B47] mb-8 leading-tight" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif', letterSpacing: '-0.02em' }}>
+                 The ECHO AI Solutions
+               </h2>
+               <p className="text-xl md:text-2xl text-[#1A2B47] max-w-4xl mx-auto leading-relaxed opacity-80">
+                 {selectedCase.solution.description}
+               </p>
+             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              {selectedCase.solution.features.map((feature, index) => {
-                const Icon = feature.icon
-                return (
-                  <div 
-                    key={index}
-                    className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-shadow"
-                  >
-                    <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
-                      <Icon className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {feature.description}
-                    </p>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </div>
-      </motion.section>
+             {/* Two-Column Layout */}
+             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+               {/* Left Column - Features */}
+               <div className="space-y-12">
+                 {selectedCase.solution.features.map((feature, index) => {
+                   const Icon = feature.icon
+                   return (
+                     <motion.div 
+                       key={index}
+                       initial={{ opacity: 0, x: -50 }}
+                       animate={{ opacity: 1, x: 0 }}
+                       transition={{ delay: 0.5 + index * 0.2 }}
+                       className="group cursor-pointer"
+                     >
+                       <div className="flex items-start gap-6">
+                         {/* Numbered Circle */}
+                         <motion.div 
+                           className="w-16 h-16 rounded-full border-2 border-[#7CAAEB] flex items-center justify-center flex-shrink-0 group-hover:bg-[#7CAAEB] transition-all duration-300"
+                           whileHover={{ scale: 1.05 }}
+                         >
+                           <span className="text-lg font-bold text-[#1A2B47] group-hover:text-white transition-colors duration-300">
+                             {String(index + 1).padStart(2, '0')}
+                           </span>
+                         </motion.div>
+                         
+                         {/* Content */}
+                         <motion.div 
+                           className="flex-1 group-hover:-translate-y-1 transition-transform duration-300"
+                         >
+                           <h3 className="text-2xl md:text-3xl font-bold text-[#1A2B47] mb-4 leading-tight" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif', letterSpacing: '-0.02em' }}>
+                             {feature.title}
+                           </h3>
+                           <p className="text-lg text-[#1A2B47] leading-relaxed opacity-80" style={{ lineHeight: '1.7' }}>
+                             {feature.description}
+                           </p>
+                         </motion.div>
+                       </div>
+                     </motion.div>
+                   )
+                 })}
+               </div>
+
+               {/* Right Column - Video */}
+               <div className="relative">
+                 <motion.div 
+                   initial={{ opacity: 0, scale: 0.8 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   transition={{ delay: 0.8, duration: 0.8 }}
+                   className="relative"
+                 >
+                   {/* Challenge Video */}
+                   <div className="w-full h-[600px] relative rounded-3xl shadow-2xl overflow-hidden">
+                     <video 
+                       src="/challenge.mp4" 
+                       autoPlay
+                       loop
+                       muted
+                       playsInline
+                       className="w-full h-full object-cover rounded-3xl"
+                     >
+                       Your browser does not support the video tag.
+                     </video>
+                     
+                     {/* Subtle overlay for better text contrast if needed */}
+                     <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#7CAAEB]/5 pointer-events-none"></div>
+                   </div>
+                 </motion.div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </motion.section>
 
       {/* Results Section */}
       <motion.section 
