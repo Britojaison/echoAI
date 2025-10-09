@@ -26,7 +26,7 @@ const caseStudies = [
       paragraphs: [
         'Cinco is a rapidly expanding real estate brand with a growing client base. As the company scaled, it began facing challenges in managing heavy call volumes during peak business hours.',
         'Between 6 and 9 PM, when client inquiries peaked, staff were overwhelmed trying to manage phone calls and in-person meetings. This led to missed calls, lost opportunities, and delayed follow-ups, impacting customer satisfaction and sales.',
-        'The challenge grew with limited multilingual support, restricting Cinco’s ability to provide a seamless, personalized experience. To solve this, Cinco looked for a scalable solution to automate routine calls, ensure consistent service, and boost client engagement across locations.'
+        'The challenge grew with limited multilingual support, restricting Cinco\'s ability to provide a seamless, personalized experience. To solve this, Cinco looked for a scalable solution to automate routine calls, ensure consistent service, and boost client engagement across locations.'
       ]
     },
     solution: {
@@ -140,6 +140,71 @@ const caseStudies = [
       'Improved project delivery timelines by reducing communication delays',
       'Enhanced client satisfaction through consistent and timely follow-ups',
       'Freed up creative team to focus on high-value work'
+    ]
+  },
+  {
+    id: 'cinco',
+    company: 'Cinco',
+    industry: 'Real Estate',
+    hero: {
+      title: 'How Cinco India Automated Property Inquiries with ECHO AI',
+      subtitle: 'Handling thousands of property inquiry calls while delivering exceptional client experience',
+      description: 'Cinco, a rapidly growing real estate brand with 25 locations, implemented ECHO AI to manage their high-volume property inquiry system, enabling them to handle peak viewing hours efficiently while maintaining their commitment to client service.'
+    },
+    challenge: {
+      title: 'Handling Peak-Hour Call Overload',
+      paragraphs: [
+        'Cinco is a rapidly expanding real estate brand with a growing client base. As the company scaled, it began facing challenges in managing heavy call volumes during peak business hours.',
+        'Between 6 and 9 PM, when client inquiries peaked, staff were overwhelmed trying to manage phone calls and in-person meetings. This led to missed calls, lost opportunities, and delayed follow-ups, impacting customer satisfaction and sales.',
+        'The challenge grew with limited multilingual support, restricting Cinco\'s ability to provide a seamless, personalized experience. To solve this, Cinco looked for a scalable solution to automate routine calls, ensure consistent service, and boost client engagement across locations.'
+      ]
+    },
+    solution: {
+      title: 'The ECHO AI Solution',
+      description: 'Cinco deployed ECHO AI to handle property inquiry calls, property availability checks, and client inquiries. The system was integrated with their existing property management platform.',
+      features: [
+        {
+          title: 'Smart Property Inquiries',
+          description: 'ECHO AI handles property inquiries, viewing appointments, and follow-ups seamlessly',
+          icon: Phone
+        },
+        {
+          title: 'Real-time Property Availability',
+          description: 'Instant access to property availability across all locations',
+          icon: Clock
+        },
+        {
+          title: 'Multi-location Support',
+          description: 'Centralized system managing 25 locations simultaneously',
+          icon: Users
+        },
+        {
+          title: 'Special Requests',
+          description: 'Captures property preferences, viewing schedules, and client requirements',
+          icon: CheckCircle
+        }
+      ]
+    },
+    results: {
+      title: 'Exceptional Results',
+      metrics: [
+        { label: 'Calls answered', value: '99.8%', icon: Phone },
+        { label: 'Increase in inquiries', value: '45%', icon: TrendingUp },
+        { label: 'Reduction in missed calls', value: '30%', icon: CheckCircle },
+        { label: 'Client satisfaction', value: '4.9/5', icon: Users }
+      ],
+      quote: {
+        text: 'ECHO AI has been a game-changer for our business. We never miss a property inquiry call now, and our staff can focus on delivering exceptional in-person service. It\'s like having a dedicated receptionist at every location.',
+        author: 'Carlos Rodriguez',
+        role: 'Operations Director',
+        company: 'Cinco Real Estate'
+      }
+    },
+    impact: [
+      'Zero missed calls during peak hours',
+      'Increased revenue through higher inquiry conversion',
+      'Improved staff morale by reducing phone interruptions',
+      'Enhanced client experience with consistent service across all locations'
     ]
   }
 ]
@@ -385,8 +450,8 @@ function CaseStudiesContent() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-[#1A2B47] mb-6 md:mb-8 leading-tight" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif', letterSpacing: '-0.02em' }}>
                 Results That Matter
             </h2>
-              <p className="text-lg md:text-xl lg:text-2xl text-black md:text-[#1A2B47] max-w-4xl mx-auto leading-relaxed opacity-80" style={{ lineHeight: '1.7' }}>
-                Measurable outcomes that demonstrate ECHO AI's impact on your business
+              <p className="text-xl md:text-2xl text-[#1A2B47] max-w-4xl mx-auto leading-relaxed opacity-80" style={{ lineHeight: '1.7' }}>
+                Measurable outcomes that demonstrate ECHO AI&apos;s impact on your business
               </p>
             </div>
 
@@ -515,8 +580,8 @@ function CaseStudiesContent() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-wide mb-4">
                 Business Impact
               </h2>
-              <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
-                Measurable outcomes that demonstrate ECHO AI's transformative effect
+              <p className="text-xl text-white/80 max-w-3xl mx-auto">
+                Measurable outcomes that demonstrate ECHO AI&apos;s transformative effect
               </p>
             </div>
 
