@@ -293,9 +293,9 @@ function CaseStudiesContent() {
       >
         <div className="container mx-auto px-4">
           <div className="max-w-full md:max-w-[90%] lg:max-w-[85%] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch relative">
               {/* Left side content */}
-              <div className="md:col-span-1 p-4 md:p-8 order-1 md:order-1">
+              <div className="md:col-span-1 p-4 md:p-8 order-1 md:order-1 flex flex-col justify-center">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black md:text-gray-900 mb-6 md:mb-8 leading-tight">
                     {selectedCase.challenge.title}
                   </h2>
@@ -311,12 +311,13 @@ function CaseStudiesContent() {
               </div>
               
                {/* Right side with dynamic challenge image - Independent for each case study */}
-              <div className="md:col-span-1 flex justify-center items-center order-2 md:order-2">
-                <div className="w-full max-w-sm sm:max-w-md">
+              <div className="md:col-span-1 flex justify-center items-start order-2 md:order-2">
+                <div className="w-full h-full flex items-start justify-center overflow-hidden pt-12">
                   <img 
                     src={selectedCase.id === 'cinco' ? '/cat.png' : '/challenge.png'} 
                     alt="Challenge Illustration" 
-                    className="w-full h-auto rounded-lg shadow-lg object-contain"
+                    className="w-full h-auto rounded-t-2xl rounded-b-lg shadow-lg object-contain transform scale-125"
+                    style={{ minHeight: '450px', maxHeight: '500px' }}
                   />
                 </div>
               </div>

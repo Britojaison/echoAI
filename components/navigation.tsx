@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Phone, Calendar, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { DemoBookingModal } from "@/components/demo-booking-modal"
 
 interface NavigationProps {
   lightTheme?: boolean
@@ -16,6 +18,11 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isCaseStudiesOpen, setIsCaseStudiesOpen] = useState(false)
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null)
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+  const pathname = usePathname()
+  
+  // Check if we're on a case studies page
+  const isCaseStudiesPage = pathname === '/case-studies'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -159,17 +166,17 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="#contact" className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>Talk to Sales</span>
-              </Link>
-            </Button>
-            <Button size="sm" asChild>
-              <Link href="#contact" className="flex items-center space-x-2">
-                <Calendar className="w-4 h-4" />
-                <span>Book Demo</span>
-              </Link>
+            {!isCaseStudiesPage && (
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="#contact" className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4" />
+                  <span>Talk to Sales</span>
+                </Link>
+              </Button>
+            )}
+            <Button size="sm" onClick={() => setIsDemoModalOpen(true)} className="flex items-center space-x-2">
+              <Calendar className="w-4 h-4" />
+              <span>Book Demo</span>
             </Button>
           </div>
 
@@ -240,23 +247,29 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
               </div>
               
               <div className="pt-4 space-y-3">
-                <Button variant="ghost" size="sm" className="w-full" asChild>
-                  <Link href="#contact" className="flex items-center justify-center space-x-2">
-                    <Phone className="w-4 h-4" />
-                    <span>Talk to Sales</span>
-                  </Link>
-                </Button>
-                <Button size="sm" className="w-full" asChild>
-                  <Link href="#contact" className="flex items-center justify-center space-x-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>Book Demo</span>
-                  </Link>
+                {!isCaseStudiesPage && (
+                  <Button variant="ghost" size="sm" className="w-full" asChild>
+                    <Link href="#contact" className="flex items-center justify-center space-x-2">
+                      <Phone className="w-4 h-4" />
+                      <span>Talk to Sales</span>
+                    </Link>
+                  </Button>
+                )}
+                <Button size="sm" className="w-full" onClick={() => setIsDemoModalOpen(true)}>
+                  <Calendar className="w-4 h-4 mr-2" />
+                  <span>Book Demo</span>
                 </Button>
               </div>
             </div>
           </div>
         )}
       </div>
+
+      {/* Demo Booking Modal */}
+      <DemoBookingModal 
+        isOpen={isDemoModalOpen} 
+        onClose={() => setIsDemoModalOpen(false)} 
+      />
     </nav>
   )
 }
