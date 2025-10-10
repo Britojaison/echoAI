@@ -1,11 +1,19 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Phone } from "lucide-react"
+import { DemoBookingModal } from "@/components/demo-booking-modal"
 
 export function HeroSection() {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+  const [phoneNumber, setPhoneNumber] = useState("")
+
+  const handleLetsTalkClick = () => {
+    setIsDemoModalOpen(true)
+  }
   return (
     <section className="relative h-[50vh] md:h-[60vh] flex items-end justify-center"
       style={{ background: 'transparent' }}
@@ -40,11 +48,14 @@ export function HeroSection() {
               <Input
                 type="tel"
                 placeholder="Your Phone Number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
                 className="w-full h-12 bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-white/50"
               />
               <Button 
                 size="lg" 
                 className="w-full h-12 bg-white hover:bg-gray-100 text-blue-600 font-medium"
+                onClick={handleLetsTalkClick}
               >
                 Let&apos;s Talk
               </Button>
@@ -52,6 +63,13 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
+
+      {/* Demo Booking Modal */}
+      <DemoBookingModal 
+        isOpen={isDemoModalOpen} 
+        onClose={() => setIsDemoModalOpen(false)}
+        initialPhoneNumber={phoneNumber}
+      />
     </section>
   )
 }
