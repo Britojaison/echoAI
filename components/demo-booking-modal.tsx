@@ -133,7 +133,7 @@ export function DemoBookingModal({ isOpen, onClose }: DemoBookingModalProps) {
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
                 <div>
                   <p className="text-gray-200 mb-6">
-                    Get an immediate personalized demonstration of ECHO AI's capabilities.
+                    Get an immediate personalized demonstration of ECHO AI&apos;s capabilities.
                   </p>
                 </div>
 
@@ -164,7 +164,7 @@ export function DemoBookingModal({ isOpen, onClose }: DemoBookingModalProps) {
                   <label className="block text-sm font-medium text-white mb-2">
                     Phone Number *
                     <span className="text-xs text-gray-300 font-normal ml-2">
-                      (Add +91 before your number)
+                      (Add country code before your number)
                     </span>
                   </label>
                   <Input
