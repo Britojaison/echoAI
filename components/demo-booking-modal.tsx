@@ -9,12 +9,13 @@ import { Calendar, X, ArrowRight } from "lucide-react"
 interface DemoBookingModalProps {
   isOpen: boolean
   onClose: () => void
+  initialPhoneNumber?: string
 }
 
-export function DemoBookingModal({ isOpen, onClose }: DemoBookingModalProps) {
+export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: DemoBookingModalProps) {
   const [formData, setFormData] = useState({
     name: "",
-    phoneNumber: ""
+    phoneNumber: initialPhoneNumber
   })
 
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -35,6 +36,13 @@ export function DemoBookingModal({ isOpen, onClose }: DemoBookingModalProps) {
       document.body.style.overflow = 'unset'
     }
   }, [isOpen])
+
+  // Update phone number when initialPhoneNumber changes
+  useEffect(() => {
+    if (initialPhoneNumber) {
+      setFormData(prev => ({ ...prev, phoneNumber: initialPhoneNumber }))
+    }
+  }, [initialPhoneNumber])
 
 
 

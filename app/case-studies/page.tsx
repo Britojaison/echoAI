@@ -316,7 +316,7 @@ function CaseStudiesContent() {
                   <img 
                     src={selectedCase.id === 'cinco' ? '/cat.png' : '/challenge.png'} 
                     alt="Challenge Illustration" 
-                    className="w-full h-auto rounded-t-2xl rounded-b-lg shadow-lg object-contain transform scale-125"
+                    className="w-full h-auto rounded-t-2xl rounded-b-lg object-contain transform scale-125"
                     style={{ minHeight: '450px', maxHeight: '500px' }}
                   />
                 </div>

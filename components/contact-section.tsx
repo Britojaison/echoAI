@@ -20,6 +20,18 @@ import {
 
 export function ContactSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    company: "",
+    useCase: "Customer Feedback Collection",
+    notes: ""
+  })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [loading, setLoading] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,6 +62,88 @@ export function ContactSection() {
     "Technical requirements assessment",
     "Dedicated account manager assignment"
   ]
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: "" }))
+    }
+    // Clear submit status when user makes changes
+    if (submitStatus) {
+      setSubmitStatus(null)
+    }
+  }
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {}
+
+    if (!formData.firstName.trim()) newErrors.firstName = "First name is required"
+    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required"
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required"
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email"
+    }
+    if (!formData.phoneNumber.trim()) newErrors.phoneNumber = "Phone number is required"
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitStatus(null)
+
+    if (!validateForm()) return
+
+    try {
+      setLoading(true)
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || "Failed to submit form")
+      }
+
+      // Success
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you! Our sales team will contact you within 2 hours.'
+      })
+      
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        company: "",
+        useCase: "Customer Feedback Collection",
+        notes: ""
+      })
+
+      // Scroll to success message
+      setTimeout(() => {
+        const contactElement = document.getElementById("contact")
+        if (contactElement) {
+          contactElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+
+    } catch (error: any) {
+      setSubmitStatus({
+        type: 'error',
+        message: error?.message || "Something went wrong. Please try again or contact us directly."
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <section id="contact" className="py-20" style={{ background: 'transparent' }}>
@@ -89,36 +183,99 @@ export function ContactSection() {
               </p>
             </CardHeader>
             <CardContent>
-              <form className="space-y-6 max-w-2xl mx-auto">
+              <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
+                {/* Success/Error Messages */}
+                {submitStatus && (
+                  <div className={`p-4 rounded-lg ${
+                    submitStatus.type === 'success' 
+                      ? 'bg-green-500/20 border border-green-500/50 text-green-100' 
+                      : 'bg-red-500/20 border border-red-500/50 text-red-100'
+                  }`}>
+                    <p className="text-sm font-medium">{submitStatus.message}</p>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">First Name *</label>
-                    <Input placeholder="John" required />
+                    <Input 
+                      placeholder="John" 
+                      value={formData.firstName}
+                      onChange={(e) => handleInputChange('firstName', e.target.value)}
+                      className={errors.firstName ? "border-red-500" : ""}
+                      disabled={loading}
+                      required 
+                    />
+                    {errors.firstName && (
+                      <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
+                    )}
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Last Name *</label>
-                    <Input placeholder="Doe" required />
+                    <Input 
+                      placeholder="Doe" 
+                      value={formData.lastName}
+                      onChange={(e) => handleInputChange('lastName', e.target.value)}
+                      className={errors.lastName ? "border-red-500" : ""}
+                      disabled={loading}
+                      required 
+                    />
+                    {errors.lastName && (
+                      <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
+                    )}
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">Email *</label>
-                  <Input type="email" placeholder="john@company.com" required />
+                  <Input 
+                    type="email" 
+                    placeholder="john@company.com" 
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    className={errors.email ? "border-red-500" : ""}
+                    disabled={loading}
+                    required 
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                  )}
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">Phone Number *</label>
-                  <Input type="tel" placeholder="+1 (555) 123-4567" required />
+                  <Input 
+                    type="tel" 
+                    placeholder="+1 (555) 123-4567" 
+                    value={formData.phoneNumber}
+                    onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
+                    className={errors.phoneNumber ? "border-red-500" : ""}
+                    disabled={loading}
+                    required 
+                  />
+                  {errors.phoneNumber && (
+                    <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>
+                  )}
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">Company</label>
-                  <Input placeholder="Your Company Name" />
+                  <Input 
+                    placeholder="Your Company Name" 
+                    value={formData.company}
+                    onChange={(e) => handleInputChange('company', e.target.value)}
+                    disabled={loading}
+                  />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">Use Case</label>
-                  <select className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm">
+                  <select 
+                    className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm"
+                    value={formData.useCase}
+                    onChange={(e) => handleInputChange('useCase', e.target.value)}
+                    disabled={loading}
+                  >
                     <option>Customer Feedback Collection</option>
                     <option>Lead Qualification</option>
                     <option>Customer Support</option>
@@ -133,11 +290,14 @@ export function ContactSection() {
                   <Textarea 
                     placeholder="Tell us about your specific use case or any questions you have..."
                     rows={4}
+                    value={formData.notes}
+                    onChange={(e) => handleInputChange('notes', e.target.value)}
+                    disabled={loading}
                   />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full">
-                  Submit
+                <Button type="submit" size="lg" className="w-full" disabled={loading}>
+                  {loading ? "Submitting..." : "Submit"}
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
 
