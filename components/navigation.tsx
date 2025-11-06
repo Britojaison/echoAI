@@ -73,9 +73,9 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src="/echo-logo.png"
               alt="Infini8 Voice Logo"
@@ -83,10 +83,16 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
               height={80}
               className="w-16 h-16 sm:w-20 sm:h-20"
             />
+            <span className={cn(
+              "text-xl font-semibold",
+              lightTheme ? "text-gray-900" : "text-foreground"
+            )}>
+              Infini8 Voice
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation - All items grouped on the right with equal spacing */}
+          <div className="hidden md:flex items-center ml-auto space-x-6">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -162,19 +168,27 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
                 </div>
               )}
             </div>
-          </div>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-4">
+            {/* Talk to Sales */}
             {!isCaseStudiesPage && (
-              <Button variant="ghost" size="sm" asChild>
+              <Button 
+                size="sm" 
+                asChild
+                className="bg-gradient-to-r from-blue-500 to-blue-600 text-black hover:from-blue-600 hover:to-blue-700"
+              >
                 <Link href="#contact" className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
                   <span>Talk to Sales</span>
                 </Link>
               </Button>
             )}
-            <Button size="sm" onClick={() => setIsDemoModalOpen(true)} className="flex items-center space-x-2">
+
+            {/* Book Demo */}
+            <Button 
+              size="sm" 
+              onClick={() => setIsDemoModalOpen(true)} 
+              className="flex items-center space-x-2 bg-white text-blue-600 hover:bg-gray-100 hover:text-blue-700"
+            >
               <Calendar className="w-4 h-4" />
               <span>Book Demo</span>
             </Button>
@@ -183,7 +197,7 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
           {/* Mobile Menu Button */}
           <button
             className={cn(
-              "md:hidden p-2",
+              "md:hidden p-2 ml-auto",
               lightTheme ? "text-gray-900" : "text-foreground"
             )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -248,14 +262,22 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
               
               <div className="pt-4 space-y-3">
                 {!isCaseStudiesPage && (
-                  <Button variant="ghost" size="sm" className="w-full" asChild>
+                  <Button 
+                    size="sm" 
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-black hover:from-blue-600 hover:to-blue-700" 
+                    asChild
+                  >
                     <Link href="#contact" className="flex items-center justify-center space-x-2">
                       <Phone className="w-4 h-4" />
                       <span>Talk to Sales</span>
                     </Link>
                   </Button>
                 )}
-                <Button size="sm" className="w-full" onClick={() => setIsDemoModalOpen(true)}>
+                <Button 
+                  size="sm" 
+                  className="w-full bg-white text-blue-600 hover:bg-gray-100 hover:text-blue-700" 
+                  onClick={() => setIsDemoModalOpen(true)}
+                >
                   <Calendar className="w-4 h-4 mr-2" />
                   <span>Book Demo</span>
                 </Button>
