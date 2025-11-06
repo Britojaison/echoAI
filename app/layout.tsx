@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'ECHO AI - AI Voice Calling Agents for Customer Engagement',
-    template: '%s | ECHO AI'
+    default: 'Infini8 Voice - AI Voice Calling Agents for Customer Engagement',
+    template: '%s | Infini8 Voice'
   },
   description: 'Automate customer interactions with AI voice calling agents. Collect feedback, qualify leads, and engage customers in English and regional languages. Trusted by 500+ companies worldwide.',
   keywords: [
@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     'interactive voice response',
     'IVR'
   ],
-  authors: [{ name: 'ECHO AI', url: 'https://echoai.com' }],
-  creator: 'ECHO AI',
-  publisher: 'ECHO AI',
-  applicationName: 'ECHO AI',
+  authors: [{ name: 'Infini8 Voice', url: 'https://infini8voice.com' }],
+  creator: 'Infini8 Voice',
+  publisher: 'Infini8 Voice',
+  applicationName: 'Infini8 Voice',
   category: 'Technology',
   icons: {
     icon: [
@@ -57,21 +57,21 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://echoai.com'),
+  metadataBase: new URL('https://infini8voice.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'ECHO AI - AI Voice Calling Agents for Customer Engagement',
+    title: 'Infini8 Voice - AI Voice Calling Agents for Customer Engagement',
     description: 'Automate customer interactions with AI voice calling agents. Collect feedback, qualify leads, and engage customers in English and regional languages.',
-    url: 'https://echoai.com',
-    siteName: 'ECHO AI',
+    url: 'https://infini8voice.com',
+    siteName: 'Infini8 Voice',
     images: [
       {
         url: '/og-image.jpg',
         width: 1400,
         height: 700,
-        alt: 'ECHO AI - AI Voice Calling Agents',
+        alt: 'Infini8 Voice - AI Voice Calling Agents',
       },
     ],
     locale: 'en_US',
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ECHO AI - AI Voice Calling Agents for Customer Engagement',
+    title: 'Infini8 Voice - AI Voice Calling Agents for Customer Engagement',
     description: 'Automate customer interactions with AI voice calling agents. Collect feedback, qualify leads, and engage customers in English and regional languages.',
     images: ['/og-image.jpg'],
   },

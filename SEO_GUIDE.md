@@ -1,4 +1,4 @@
-# SEO Optimization Guide for ECHO AI Website
+# SEO Optimization Guide for Infini8 Voice Website
 
 ## ✅ Implemented SEO Features
 
@@ -43,9 +43,9 @@
 
 ### 1. **Google Search Console Setup**
 1. Go to [Google Search Console](https://search.google.com/search-console)
-2. Add your property (https://echoai.com)
+2. Add your property (https://infini8voice.com)
 3. Verify ownership (add verification code to `app/layout.tsx` metadata.verification.google)
-4. Submit sitemap: `https://echoai.com/sitemap.xml`
+4. Submit sitemap: `https://infini8voice.com/sitemap.xml`
 
 ### 2. **Bing Webmaster Tools**
 1. Go to [Bing Webmaster Tools](https://www.bing.com/webmasters)
@@ -73,7 +73,7 @@ Consider adding Article schema for case studies:
   "headline": "Case Study Title",
   "author": {
     "@type": "Organization",
-    "name": "ECHO AI"
+    "name": "Infini8 Voice"
   },
   "datePublished": "2024-01-01",
   "dateModified": "2024-01-01"
@@ -191,7 +191,7 @@ After deployment, these will be available:
 3. `app/robots.ts` - `baseUrl` variable
 4. `components/structured-data.tsx` - All URLs
 
-Replace `https://echoai.com` with your actual domain.
+Replace `https://infini8voice.com` with your actual domain.
 
 ---
 

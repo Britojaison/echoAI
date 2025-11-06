@@ -79,7 +79,7 @@ Currently, Resend is in **test mode** and can only send to your verified email (
 3. **Update the Code**
    Once verified, change in `/app/api/contact/route.ts`:
    ```typescript
-   from: 'ECHO AI <noreply@88gb.in>',  // Use your domain
+   from: 'Infini8 Voice <noreply@88gb.in>',  // Use your domain
    to: ['brito.jaison@88gb.in'],        // Can now send to any email
    ```
 

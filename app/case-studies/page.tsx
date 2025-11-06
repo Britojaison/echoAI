@@ -17,9 +17,9 @@ const caseStudies = [
     company: 'Cinco',
     industry: 'Real Estate',
     hero: {
-      title: 'How Cinco India Automated Property Inquiries with ECHO AI',
+      title: 'How Cinco India Automated Property Inquiries with Infini8 Voice',
       subtitle: 'Handling thousands of property inquiry calls while delivering exceptional client experience',
-      description: 'Cinco, a rapidly growing real estate brand with 25 locations, implemented ECHO AI to manage their high-volume property inquiry system, enabling them to handle peak viewing hours efficiently while maintaining their commitment to client service.'
+      description: 'Cinco, a rapidly growing real estate brand with 25 locations, implemented Infini8 Voice to manage their high-volume property inquiry system, enabling them to handle peak viewing hours efficiently while maintaining their commitment to client service.'
     },
     challenge: {
       title: 'Handling Peak-Hour Call Overload',
@@ -30,12 +30,12 @@ const caseStudies = [
       ]
     },
     solution: {
-      title: 'The ECHO AI Solution',
-      description: 'Cinco deployed ECHO AI to handle property inquiry calls, property availability checks, and client inquiries. The system was integrated with their existing property management platform.',
+      title: 'The Infini8 Voice Solution',
+      description: 'Cinco deployed Infini8 Voice to handle property inquiry calls, property availability checks, and client inquiries. The system was integrated with their existing property management platform.',
       features: [
         {
           title: 'Smart Property Inquiries',
-          description: 'ECHO AI handles property inquiries, viewing appointments, and follow-ups seamlessly',
+          description: 'Infini8 Voice handles property inquiries, viewing appointments, and follow-ups seamlessly',
           icon: Phone
         },
         {
@@ -64,7 +64,7 @@ const caseStudies = [
         { label: 'Client satisfaction', value: '4.9/5', icon: Users }
       ],
       quote: {
-        text: 'ECHO AI has been a game-changer for our real estate business. We never miss a property inquiry now, and our agents can focus on delivering exceptional in-person service. It\'s like having a dedicated receptionist at every property.',
+        text: 'Infini8 Voice has been a game-changer for our real estate business. We never miss a property inquiry now, and our agents can focus on delivering exceptional in-person service. It\'s like having a dedicated receptionist at every property.',
         author: 'Carlos Rodriguez',
         role: 'Operations Director',
         company: 'Cinco Real Estate'
@@ -82,9 +82,9 @@ const caseStudies = [
     company: 'Creative Orbit',
     industry: 'Digital Marketing & Creative Agency',
     hero: {
-      title: 'How ECHO AI Helped Creative Orbit Scale Client Communication',
+      title: 'How Infini8 Voice Helped Creative Orbit Scale Client Communication',
       subtitle: 'Automating client follow-ups and feedback collection while maintaining personalized service',
-      description: 'Creative Orbit, a full-service digital marketing agency, leveraged ECHO AI to automate client communications and gather feedback, allowing their team to focus on creative work while maintaining excellent client relationships.'
+      description: 'Creative Orbit, a full-service digital marketing agency, leveraged Infini8 Voice to automate client communications and gather feedback, allowing their team to focus on creative work while maintaining excellent client relationships.'
     },
     challenge: {
       title: 'The Challenge',
@@ -95,12 +95,12 @@ const caseStudies = [
       ]
     },
     solution: {
-      title: 'The ECHO AI Solution',
-      description: 'Creative Orbit implemented ECHO AI to handle routine client communications, feedback collection, and follow-ups. The AI agents were trained to understand their service offerings and communicate in their brand voice.',
+      title: 'The Infini8 Voice Solution',
+      description: 'Creative Orbit implemented Infini8 Voice to handle routine client communications, feedback collection, and follow-ups. The AI agents were trained to understand their service offerings and communicate in their brand voice.',
       features: [
         {
           title: 'Automated Follow-ups',
-          description: 'ECHO AI automatically contacts clients for project updates and status checks',
+          description: 'Infini8 Voice automatically contacts clients for project updates and status checks',
           icon: Phone
         },
         {
@@ -129,7 +129,7 @@ const caseStudies = [
         { label: 'Client satisfaction score', value: '4.8/5', icon: CheckCircle }
       ],
       quote: {
-        text: 'ECHO AI has transformed how we communicate with our clients. We\'re now able to maintain consistent touchpoints with every client while our team focuses on what we do best – creating amazing work.',
+        text: 'Infini8 Voice has transformed how we communicate with our clients. We\'re now able to maintain consistent touchpoints with every client while our team focuses on what we do best – creating amazing work.',
         author: 'Sarah Mitchell',
         role: 'Founder & Creative Director',
         company: 'Creative Orbit'
@@ -147,9 +147,9 @@ const caseStudies = [
     company: 'Cinco',
     industry: 'Real Estate',
     hero: {
-      title: 'How Cinco India Automated Property Inquiries with ECHO AI',
+      title: 'How Cinco India Automated Property Inquiries with Infini8 Voice',
       subtitle: 'Handling thousands of property inquiry calls while delivering exceptional client experience',
-      description: 'Cinco, a rapidly growing real estate brand with 25 locations, implemented ECHO AI to manage their high-volume property inquiry system, enabling them to handle peak viewing hours efficiently while maintaining their commitment to client service.'
+      description: 'Cinco, a rapidly growing real estate brand with 25 locations, implemented Infini8 Voice to manage their high-volume property inquiry system, enabling them to handle peak viewing hours efficiently while maintaining their commitment to client service.'
     },
     challenge: {
       title: 'Handling Peak-Hour Call Overload',
@@ -160,12 +160,12 @@ const caseStudies = [
       ]
     },
     solution: {
-      title: 'The ECHO AI Solution',
-      description: 'Cinco deployed ECHO AI to handle property inquiry calls, property availability checks, and client inquiries. The system was integrated with their existing property management platform.',
+      title: 'The Infini8 Voice Solution',
+      description: 'Cinco deployed Infini8 Voice to handle property inquiry calls, property availability checks, and client inquiries. The system was integrated with their existing property management platform.',
       features: [
         {
           title: 'Smart Property Inquiries',
-          description: 'ECHO AI handles property inquiries, viewing appointments, and follow-ups seamlessly',
+          description: 'Infini8 Voice handles property inquiries, viewing appointments, and follow-ups seamlessly',
           icon: Phone
         },
         {
@@ -194,7 +194,7 @@ const caseStudies = [
         { label: 'Client satisfaction', value: '4.9/5', icon: Users }
       ],
       quote: {
-        text: 'ECHO AI has been a game-changer for our business. We never miss a property inquiry call now, and our staff can focus on delivering exceptional in-person service. It\'s like having a dedicated receptionist at every location.',
+        text: 'Infini8 Voice has been a game-changer for our business. We never miss a property inquiry call now, and our staff can focus on delivering exceptional in-person service. It\'s like having a dedicated receptionist at every location.',
         author: 'Carlos Rodriguez',
         role: 'Operations Director',
         company: 'Cinco Real Estate'
@@ -338,7 +338,7 @@ function CaseStudiesContent() {
              {/* Section Title */}
              <div className="text-center mb-12 md:mb-16 lg:mb-20">
                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-black md:text-[#1A2B47] mb-6 md:mb-8 leading-tight" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif', letterSpacing: '-0.02em' }}>
-                 The ECHO AI Solutions
+                 The Infini8 Voice Solutions
               </h2>
                <p className="text-lg md:text-xl lg:text-2xl text-black md:text-[#1A2B47] max-w-4xl mx-auto leading-relaxed opacity-80">
                 {selectedCase.solution.description}
@@ -452,7 +452,7 @@ function CaseStudiesContent() {
                 Results That Matter
             </h2>
               <p className="text-xl md:text-2xl text-[#1A2B47] max-w-4xl mx-auto leading-relaxed opacity-80" style={{ lineHeight: '1.7' }}>
-                Measurable outcomes that demonstrate ECHO AI&apos;s impact on your business
+                Measurable outcomes that demonstrate Infini8 Voice&apos;s impact on your business
               </p>
             </div>
 
@@ -468,8 +468,8 @@ function CaseStudiesContent() {
                 <p className="text-white font-black inline text-xl sm:text-2xl md:text-3xl lg:text-4xl" style={{ lineHeight: '1.2' }}>
                   <span className="bg-[#007bff] px-2 py-1 box-decoration-clone" style={{ lineHeight: '1.2' }}>
                     {selectedCase.id === 'cinco' 
-                      ? '"ECHO AI has been a game-changer for our real estate business. We never miss a property inquiry now, and our agents can focus on delivering exceptional in-person service. It\'s like having a dedicated receptionist at every property." '
-                      : '"ECHO AI has transformed how we communicate with our clients. We\'re now able to maintain consistent touchpoints with every client while our team focuses on what we do best – creating amazing work." '
+                      ? '"Infini8 Voice has been a game-changer for our real estate business. We never miss a property inquiry now, and our agents can focus on delivering exceptional in-person service. It\'s like having a dedicated receptionist at every property." '
+                      : '"Infini8 Voice has transformed how we communicate with our clients. We\'re now able to maintain consistent touchpoints with every client while our team focuses on what we do best – creating amazing work." '
                     }
                   </span>
                   <span className="inline-block ml-2 md:ml-4 text-black font-bold text-sm sm:text-base md:text-lg lg:text-xl" style={{ lineHeight: '1.2' }}>
@@ -582,7 +582,7 @@ function CaseStudiesContent() {
                 Business Impact
               </h2>
               <p className="text-xl text-white/80 max-w-3xl mx-auto">
-                Measurable outcomes that demonstrate ECHO AI&apos;s transformative effect
+                Measurable outcomes that demonstrate Infini8 Voice&apos;s transformative effect
               </p>
             </div>
 
@@ -672,7 +672,7 @@ function CaseStudiesContent() {
               Ready to Transform Your Business?
             </h2>
             <p className="text-lg md:text-xl text-blue-100 mb-6 md:mb-8">
-              Join {selectedCase.company} and hundreds of other companies using ECHO AI to automate customer communications.
+              Join {selectedCase.company} and hundreds of other companies using Infini8 Voice to automate customer communications.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
               <Link 
@@ -699,7 +699,7 @@ function CaseStudiesContent() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <p className="text-gray-400">
-              © 2025 ECHO AI. All rights reserved.
+              © 2025 Infini8 Voice. All rights reserved.
             </p>
           </div>
         </div>

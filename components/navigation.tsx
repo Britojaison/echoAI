@@ -78,7 +78,7 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
           <Link href="/" className="flex items-center">
             <Image
               src="/echo-logo.png"
-              alt="ECHO AI Logo"
+              alt="Infini8 Voice Logo"
               width={80}
               height={80}
               className="w-16 h-16 sm:w-20 sm:h-20"

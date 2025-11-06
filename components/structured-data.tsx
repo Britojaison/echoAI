@@ -2,15 +2,15 @@ export function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "ECHO AI",
-    "url": "https://echoai.com",
-    "logo": "https://echoai.com/echo-logo.png",
+    "name": "Infini8 Voice",
+    "url": "https://infini8voice.com",
+    "logo": "https://infini8voice.com/echo-logo.png",
     "description": "AI voice calling agents for customer engagement, lead qualification, and feedback collection",
     "sameAs": [
       // Add your social media profiles here
-      // "https://www.linkedin.com/company/echo-ai",
-      // "https://twitter.com/echoai",
-      // "https://www.facebook.com/echoai"
+      // "https://www.linkedin.com/company/infini8-voice",
+      // "https://twitter.com/infini8voice",
+      // "https://www.facebook.com/infini8voice"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -28,13 +28,13 @@ export function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "ECHO AI",
-    "url": "https://echoai.com",
+    "name": "Infini8 Voice",
+    "url": "https://infini8voice.com",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://echoai.com/case-studies?search={search_term_string}"
+        "urlTemplate": "https://infini8voice.com/case-studies?search={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -43,7 +43,7 @@ export function StructuredData() {
   const softwareApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "ECHO AI",
+    "name": "Infini8 Voice",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
     "offers": {

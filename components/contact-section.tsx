@@ -160,7 +160,7 @@ export function ContactSection() {
             <span className="gradient-text">Started</span>?
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Get in touch with our sales team for a personalized consultation and learn how ECHO AI can transform your business.
+            Get in touch with our sales team for a personalized consultation and learn how Infini8 Voice can transform your business.
           </p>
         </motion.div>
 
@@ -398,7 +398,7 @@ export function ContactSection() {
                 <Users className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-4">TRUSTED by 500+ COMPANIES</h3>
                 <p className="text-base sm:text-lg text-muted-foreground mb-6 max-w-4xl mx-auto">
-                  Join industry leaders who have transformed their customer engagement with ECHO AI.
+                  Join industry leaders who have transformed their customer engagement with Infini8 Voice.
                 </p>
                 <div className="flex flex-row flex-wrap justify-center gap-6 sm:gap-8 text-sm">
                   <div className="text-center">

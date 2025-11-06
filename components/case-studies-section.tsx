@@ -21,14 +21,14 @@ const caseStudies = [
     industry: "Technology",
     logo: "TC",
     challenge: "Struggling with low customer feedback response rates and manual lead qualification processes.",
-    solution: "Implemented ECHO AI voice agents for automated feedback collection and lead scoring.",
+    solution: "Implemented Infini8 Voice voice agents for automated feedback collection and lead scoring.",
     results: {
       responseRate: "85%",
       leadQuality: "60%",
       timeSaved: "75%",
       revenue: "40%"
     },
-    quote: "ECHO AI transformed how we engage with customers. The automated feedback collection alone increased our response rates by 300%.",
+    quote: "Infini8 Voice transformed how we engage with customers. The automated feedback collection alone increased our response rates by 300%.",
     author: "Sarah Johnson, VP of Customer Success",
     rating: 5,
     color: "from-blue-500 to-blue-600"
@@ -45,7 +45,7 @@ const caseStudies = [
       timeSaved: "80%",
       revenue: "55%"
     },
-    quote: "Our customers love the personalized touch of ECHO AI. It feels like talking to a real person who truly understands their needs.",
+    quote: "Our customers love the personalized touch of Infini8 Voice. It feels like talking to a real person who truly understands their needs.",
     author: "Michael Chen, Head of Operations",
     rating: 5,
     color: "from-green-500 to-green-600"
@@ -55,14 +55,14 @@ const caseStudies = [
     industry: "Healthcare",
     logo: "HP",
     challenge: "Required HIPAA-compliant patient feedback collection with high security and privacy standards.",
-    solution: "Customized ECHO AI solution with enterprise security and compliance features for patient engagement.",
+    solution: "Customized Infini8 Voice solution with enterprise security and compliance features for patient engagement.",
     results: {
       responseRate: "78%",
       leadQuality: "70%",
       timeSaved: "65%",
       revenue: "35%"
     },
-    quote: "ECHO AI's security and compliance features gave us confidence to automate patient interactions. The results speak for themselves.",
+    quote: "Infini8 Voice's security and compliance features gave us confidence to automate patient interactions. The results speak for themselves.",
     author: "Dr. Emily Rodriguez, Chief Medical Officer",
     rating: 5,
     color: "from-purple-500 to-purple-600"
@@ -79,7 +79,7 @@ const caseStudies = [
       timeSaved: "70%",
       revenue: "50%"
     },
-    quote: "ECHO AI revolutionized our loan qualification process. We now process 3x more applications with higher accuracy.",
+    quote: "Infini8 Voice revolutionized our loan qualification process. We now process 3x more applications with higher accuracy.",
     author: "David Park, Director of Lending",
     rating: 5,
     color: "from-orange-500 to-orange-600"
@@ -89,14 +89,14 @@ const caseStudies = [
     industry: "Education",
     logo: "ES",
     challenge: "Need to collect student and parent feedback at scale across multiple educational programs.",
-    solution: "Deployed ECHO AI for automated feedback collection and parent engagement across all programs.",
+    solution: "Deployed Infini8 Voice for automated feedback collection and parent engagement across all programs.",
     results: {
       responseRate: "90%",
       leadQuality: "55%",
       timeSaved: "85%",
       revenue: "45%"
     },
-    quote: "Parent engagement increased dramatically with ECHO AI. The personalized approach makes everyone feel heard and valued.",
+    quote: "Parent engagement increased dramatically with Infini8 Voice. The personalized approach makes everyone feel heard and valued.",
     author: "Lisa Thompson, Director of Student Affairs",
     rating: 5,
     color: "from-cyan-500 to-cyan-600"
@@ -106,14 +106,14 @@ const caseStudies = [
     industry: "Automotive",
     logo: "AM",
     challenge: "Need to collect post-purchase feedback and identify upsell opportunities for service packages.",
-    solution: "Implemented ECHO AI for automated customer follow-up and service package qualification.",
+    solution: "Implemented Infini8 Voice for automated customer follow-up and service package qualification.",
     results: {
       responseRate: "82%",
       leadQuality: "65%",
       timeSaved: "60%",
       revenue: "60%"
     },
-    quote: "ECHO AI helped us maintain strong relationships with customers post-purchase. Service package sales increased significantly.",
+    quote: "Infini8 Voice helped us maintain strong relationships with customers post-purchase. Service package sales increased significantly.",
     author: "Robert Kim, Customer Relations Manager",
     rating: 5,
     color: "from-red-500 to-red-600"
@@ -161,7 +161,7 @@ export function CaseStudiesSection() {
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             See how leading companies across industries are transforming their customer 
-            engagement with ECHO AI voice agents.
+            engagement with Infini8 Voice voice agents.
           </p>
         </motion.div>
 
@@ -281,7 +281,7 @@ export function CaseStudiesSection() {
         >
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">500+</div>
-            <div className="text-muted-foreground">Companies Trust ECHO AI</div>
+            <div className="text-muted-foreground">Companies Trust Infini8 Voice</div>
           </div>
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">1M+</div>
@@ -317,7 +317,7 @@ export function CaseStudiesSection() {
                 Join Hundreds of Successful Companies
               </h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Start your journey with ECHO AI and see why industry leaders choose us 
+                Start your journey with Infini8 Voice and see why industry leaders choose us 
                 for their customer engagement automation needs.
               </p>
 

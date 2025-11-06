@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://echoai.com'
+  const baseUrl = 'https://infini8voice.com'
 
   return [
     {

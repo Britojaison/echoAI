@@ -11,7 +11,7 @@
 1. In Google Account Settings, go to "Security"
 2. Under "2-Step Verification", click "App passwords"
 3. Select "Mail" as the app
-4. Select "Other" as the device and name it "ECHO AI Website"
+4. Select "Other" as the device and name it "Infini8 Voice Website"
 5. Click "Generate"
 6. **Copy the 16-character password** (like: `abcd efgh ijkl mnop`)
 

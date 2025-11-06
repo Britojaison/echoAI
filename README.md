@@ -1,6 +1,6 @@
-# ECHO AI Website
+# Infini8 Voice Website
 
-A premium, enterprise-grade website for ECHO AI - an AI voice calling agent platform that enables brands to automate customer interactions, feedback collection, and lead qualification in English and regional languages.
+A premium, enterprise-grade website for Infini8 Voice - an AI voice calling agent platform that enables brands to automate customer interactions, feedback collection, and lead qualification in English and regional languages.
 
 ## Features
 
@@ -119,9 +119,9 @@ The project is ready for deployment on:
 
 ## License
 
-This project is proprietary to ECHO AI.
+This project is proprietary to Infini8 Voice.
 
 ## Support
 
-For support, email hello@echoai.com
+For support, email hello@infini8voice.com
 

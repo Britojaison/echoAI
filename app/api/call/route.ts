@@ -31,7 +31,7 @@ export async function POST(req: Request) {
       to_number: phone.startsWith("+") ? phone : `+${phone}`,
       customer: { name: name || "Guest" },
       language: "en-IN",
-      metadata: { source: "echoai-site" }
+      metadata: { source: "infini8voice-site" }
     };
 
     console.log("Making ElevenLabs API call with body:", requestBody);

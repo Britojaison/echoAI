@@ -152,7 +152,7 @@ export function FeaturesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-            How ECHO AI Works
+            How Infini8 Voice Works
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
             Our intelligent voice AI system transforms customer conversations into actionable insights and automated workflows.

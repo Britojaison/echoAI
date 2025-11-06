@@ -2,18 +2,18 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Case Studies',
-  description: 'Discover how leading companies use ECHO AI to automate customer interactions, qualify leads, and collect feedback. Real success stories from Cinco, Creative Orbit, and more.',
+  description: 'Discover how leading companies use Infini8 Voice to automate customer interactions, qualify leads, and collect feedback. Real success stories from Cinco, Creative Orbit, and more.',
   openGraph: {
-    title: 'Case Studies - ECHO AI Success Stories',
-    description: 'Discover how leading companies use ECHO AI to automate customer interactions, qualify leads, and collect feedback.',
-    url: 'https://echoai.com/case-studies',
-    siteName: 'ECHO AI',
+    title: 'Case Studies - Infini8 Voice Success Stories',
+    description: 'Discover how leading companies use Infini8 Voice to automate customer interactions, qualify leads, and collect feedback.',
+    url: 'https://infini8voice.com/case-studies',
+    siteName: 'Infini8 Voice',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'ECHO AI Case Studies',
+        alt: 'Infini8 Voice Case Studies',
       },
     ],
     locale: 'en_US',
@@ -21,12 +21,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Case Studies - ECHO AI Success Stories',
-    description: 'Discover how leading companies use ECHO AI to automate customer interactions, qualify leads, and collect feedback.',
+    title: 'Case Studies - Infini8 Voice Success Stories',
+    description: 'Discover how leading companies use Infini8 Voice to automate customer interactions, qualify leads, and collect feedback.',
     images: ['/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://echoai.com/case-studies',
+    canonical: 'https://infini8voice.com/case-studies',
   },
 }
 

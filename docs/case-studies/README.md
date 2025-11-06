@@ -1,6 +1,6 @@
 # Case Studies
 
-This folder contains PDF case studies for the ECHO AI project.
+This folder contains PDF case studies for the Infini8 Voice project.
 
 ## Upload Instructions
 

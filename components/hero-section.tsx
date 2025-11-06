@@ -41,7 +41,7 @@ export function HeroSection() {
           >
             <div className="space-y-2">
               <p className="text-lg sm:text-xl text-white font-medium">Don&apos;t believe us?</p>
-              <p className="text-lg sm:text-xl text-white font-medium">Have ECHO AI give you a call.</p>
+              <p className="text-lg sm:text-xl text-white font-medium">Have Infini8 Voice give you a call.</p>
             </div>
 
             <div className="flex flex-col gap-3 sm:gap-4">

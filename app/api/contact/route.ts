@@ -58,7 +58,7 @@ export async function POST(req: Request) {
         });
 
         const mailOptions = {
-          from: `ECHO AI Website <${process.env.GMAIL_USER}>`,
+          from: `Infini8 Voice Website <${process.env.GMAIL_USER}>`,
           to: 'brito.jaison@88gb.in', // Your email address
           replyTo: formData.email,
           subject: `🔔 New Sales Inquiry from ${formData.firstName} ${formData.lastName}`,
@@ -81,7 +81,7 @@ export async function POST(req: Request) {
               <div class="container">
                 <div class="header">
                   <h1 style="margin: 0;">🎯 New Sales Inquiry</h1>
-                  <p style="margin: 10px 0 0 0; opacity: 0.9;">ECHO AI Contact Form</p>
+                  <p style="margin: 10px 0 0 0; opacity: 0.9;">Infini8 Voice Contact Form</p>
                 </div>
                 <div class="content">
                   <div class="field">
@@ -122,7 +122,7 @@ export async function POST(req: Request) {
                     dateStyle: 'full',
                     timeStyle: 'long'
                   })}</p>
-                  <p style="margin: 10px 0 0 0;">ECHO AI - Powered by 88GB</p>
+                  <p style="margin: 10px 0 0 0;">Infini8 Voice - Powered by 88GB</p>
                 </div>
               </div>
             </body>

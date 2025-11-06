@@ -141,7 +141,7 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
                 <div>
                   <p className="text-gray-200 mb-6">
-                    Get an immediate personalized demonstration of ECHO AI&apos;s capabilities.
+                    Get an immediate personalized demonstration of Infini8 Voice&apos;s capabilities.
                   </p>
                 </div>
 

@@ -43,12 +43,12 @@ export function Footer() {
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <Image
                 src="/echo-logo.png"
-                alt="ECHO AI Logo"
+                alt="Infini8 Voice Logo"
                 width={42}
                 height={42}
                 className="w-12 h-12"
               />
-              <span className="text-lg sm:text-xl font-bold gradient-text">ECHO AI</span>
+              <span className="text-lg sm:text-xl font-bold gradient-text">Infini8 Voice</span>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-md">
               Automate customer interactions with AI voice calling agents. 
@@ -179,7 +179,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} ECHO AI. All rights reserved.
+            © {currentYear} Infini8 Voice. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground mt-2 md:mt-0">
             Made with ❤️ for better customer experiences
