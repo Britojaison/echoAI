@@ -168,7 +168,7 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
             </label>
                   <Input
                     type="text"
-                    placeholder="John Doe"
+                    placeholder="Full Name"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     className={`bg-white text-black placeholder:text-gray-600 ${errors.name ? "border-red-500" : ""}`}
