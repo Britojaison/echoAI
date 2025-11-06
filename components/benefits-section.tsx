@@ -127,66 +127,184 @@ export function BenefitsSection() {
                 animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 + 0.5 }}
               >
-                {/* Benefit-specific Animation */}
-                <motion.div
-                  className="relative perspective-1000"
-                  initial={{ scale: 1, rotateY: 0 }}
-                  animate={isVisible ? { scale: 1, rotateY: 0 } : { scale: 1, rotateY: 0 }}
-                  transition={{ 
-                    duration: 1, 
-                    delay: index * 0.2 + 0.7,
-                    type: "spring",
-                    stiffness: 80
-                  }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    rotateY: 5,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  {/* Animated Icon Only */}
+                {index === 0 ? (
+                  /* Language Cluster for Multilingual Support */
                   <motion.div
-                    animate={{ 
-                      rotate: [0, 360],
-                      scale: [1, 1.1, 1]
-                    }}
-                    transition={{ 
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
+                    className="relative w-96 h-96 sm:w-[36rem] sm:h-[36rem] lg:w-[40rem] lg:h-[40rem] flex items-center justify-center overflow-visible"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={isVisible ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.2 + 0.7 }}
                   >
-                    <benefit.icon 
-                      className="w-12 h-12 sm:w-16 sm:h-16 text-white" 
+                    {/* All languages - arranged in a circular pattern with equal spacing */}
+                    {(() => {
+                      const languages = [
+                        { text: "हिंदी", lang: "Hindi" },
+                        { text: "English", lang: "English" },
+                        { text: "தமிழ்", lang: "Tamil" },
+                        { text: "తెలుగు", lang: "Telugu" },
+                        { text: "ಕನ್ನಡ", lang: "Kannada" },
+                        { text: "বাংলা", lang: "Bangla" },
+                        { text: "ਪੰਜਾਬੀ", lang: "Punjabi" },
+                        { text: "اردو", lang: "Urdu" },
+                        { text: "Español", lang: "Spanish" },
+                        { text: "العربية", lang: "Arabic" },
+                      ]
+                      const radius = 110 // Circle radius - increased significantly for better readability
+                      const angleStep = (2 * Math.PI) / languages.length // Equal angle between each language
+                      const startAngle = -Math.PI / 2 // Start from top (12 o'clock position)
+                      
+                      return languages.map((lang, index) => {
+                        const angle = startAngle + (index * angleStep)
+                        const x = radius * Math.cos(angle)
+                        const y = radius * Math.sin(angle)
+                        
+                        return {
+                          ...lang,
+                          delay: index * 0.1,
+                          x: Math.round(x),
+                          y: Math.round(y),
+                          opacity: index === 1 ? [0.6, 1, 0.6] : [0.4, 0.9, 0.4], // English slightly brighter
+                          z: index % 3
+                        }
+                      })
+                    })().map((lang, langIndex) => (
+                      <motion.div
+                        key={lang.lang}
+                        className="absolute text-2xl sm:text-3xl lg:text-4xl font-semibold whitespace-nowrap pointer-events-none text-white"
+                        style={{
+                          x: lang.x,
+                          y: lang.y,
+                          zIndex: lang.z,
+                        }}
+                        initial={{ opacity: 0, scale: 0.5, rotate: -5 }}
+                        animate={isVisible ? {
+                          opacity: lang.opacity,
+                          scale: [0.9, 1.1, 0.9],
+                          rotate: [-3, 3, -3],
+                          x: lang.x,
+                          y: lang.y,
+                        } : { opacity: 0, scale: 0.5 }}
+                        transition={{
+                          duration: 4 + langIndex * 0.3,
+                          delay: lang.delay,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          ease: "easeInOut",
+                          opacity: {
+                            duration: 5 + langIndex * 0.4,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            repeatType: "reverse"
+                          },
+                          scale: {
+                            duration: 4 + langIndex * 0.3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            repeatType: "reverse"
+                          },
+                          rotate: {
+                            duration: 6 + langIndex * 0.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            repeatType: "reverse"
+                          }
+                        }}
+                      >
+                        {lang.text}
+                      </motion.div>
+                    ))}
+                    
+                    {/* Floating circles */}
+                    <motion.div
+                      className="absolute -top-8 -right-8 w-16 h-16 sm:w-20 sm:h-20 bg-blue-500/30 rounded-full blur-sm"
+                      animate={isVisible ? {
+                        y: [0, -15, 0],
+                        opacity: [0.3, 0.6, 0.3],
+                        scale: [1, 1.1, 1]
+                      } : { opacity: 0 }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                    <motion.div
+                      className="absolute -bottom-8 -left-8 w-12 h-12 sm:w-16 sm:h-16 bg-purple-500/30 rounded-full blur-sm"
+                      animate={isVisible ? {
+                        y: [0, 15, 0],
+                        opacity: [0.3, 0.6, 0.3],
+                        scale: [1, 1.1, 1]
+                      } : { opacity: 0 }}
+                      transition={{
+                        duration: 3,
+                        delay: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
                     />
                   </motion.div>
+                ) : (
+                  /* Default icon animation for other benefits */
+                  <motion.div
+                    className="relative perspective-1000"
+                    initial={{ scale: 1, rotateY: 0 }}
+                    animate={isVisible ? { scale: 1, rotateY: 0 } : { scale: 1, rotateY: 0 }}
+                    transition={{ 
+                      duration: 1, 
+                      delay: index * 0.2 + 0.7,
+                      type: "spring",
+                      stiffness: 80
+                    }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      rotateY: 5,
+                      transition: { duration: 0.3 }
+                    }}
+                  >
+                    {/* Animated Icon Only */}
+                    <motion.div
+                      animate={{ 
+                        rotate: [0, 360],
+                        scale: [1, 1.1, 1]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    >
+                      <benefit.icon 
+                        className="w-12 h-12 sm:w-16 sm:h-16 text-white" 
+                      />
+                    </motion.div>
 
-                  {/* Floating Elements */}
-                  <motion.div
-                    className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/30 rounded-full"
-                    animate={{
-                      y: [0, -10, 0],
-                      opacity: [0.3, 0.8, 0.3]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: index * 0.5
-                    }}
-                  />
-                  <motion.div
-                    className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500/30 rounded-full"
-                    animate={{
-                      y: [0, 10, 0],
-                      opacity: [0.3, 0.8, 0.3]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: index * 0.5 + 1
-                    }}
-                  />
-                </motion.div>
+                    {/* Floating Elements */}
+                    <motion.div
+                      className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500/30 rounded-full"
+                      animate={{
+                        y: [0, -10, 0],
+                        opacity: [0.3, 0.8, 0.3]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.5
+                      }}
+                    />
+                    <motion.div
+                      className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500/30 rounded-full"
+                      animate={{
+                        y: [0, 10, 0],
+                        opacity: [0.3, 0.8, 0.3]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.5 + 1
+                      }}
+                    />
+                  </motion.div>
+                )}
               </motion.div>
             </motion.div>
           ))}
