@@ -15,7 +15,8 @@ interface DemoBookingModalProps {
 export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: DemoBookingModalProps) {
   const [formData, setFormData] = useState({
     name: "",
-    phoneNumber: initialPhoneNumber
+    countryCode: "+91",
+    phoneNumber: ""
   })
 
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -40,7 +41,15 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
   // Update phone number when initialPhoneNumber changes
   useEffect(() => {
     if (initialPhoneNumber) {
-      setFormData(prev => ({ ...prev, phoneNumber: initialPhoneNumber }))
+      // Try to extract country code if present
+      if (initialPhoneNumber.startsWith("+")) {
+        const parts = initialPhoneNumber.split(/\s+/)
+        const code = parts[0] || "+91"
+        const number = parts.slice(1).join("") || ""
+        setFormData(prev => ({ ...prev, countryCode: code, phoneNumber: number }))
+      } else {
+        setFormData(prev => ({ ...prev, phoneNumber: initialPhoneNumber }))
+      }
     }
   }, [initialPhoneNumber])
 
@@ -57,6 +66,7 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
     const newErrors: Record<string, string> = {}
 
     if (!formData.name.trim()) newErrors.name = "Name is required"
+    if (!formData.countryCode.trim()) newErrors.countryCode = "Country code is required"
     if (!formData.phoneNumber.trim()) newErrors.phoneNumber = "Phone number is required"
 
     setErrors(newErrors)
@@ -78,10 +88,12 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
 
     if (!validateForm()) return
 
-    const phone = normalizePhone(formData.phoneNumber)
+    // Combine country code and phone number
+    const combinedPhone = `${formData.countryCode.replace(/\s+/g, "")}${formData.phoneNumber.replace(/\s+/g, "")}`
+    const phone = normalizePhone(combinedPhone)
     // very loose check:
     if (!/^\+[1-9]\d{7,14}$/.test(phone)) {
-      setErrors(prev => ({ ...prev, phoneNumber: "Enter a valid phone (E.164) like +919876543210" }))
+      setErrors(prev => ({ ...prev, phoneNumber: "Enter a valid phone number" }))
       return
     }
 
@@ -100,9 +112,9 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
       }
 
       // success UI
-      setOkMsg("Call is being placed. You’ll receive it shortly.")
+      setOkMsg("Call is being placed. You'll receive it shortly.")
       // Reset & close after a moment
-      setFormData({ name: "", phoneNumber: "" })
+      setFormData({ name: "", countryCode: "+91", phoneNumber: "" })
       setTimeout(() => {
         setOkMsg(null)
         onClose()
@@ -171,21 +183,43 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
                 <div>
                   <label className="block text-sm font-medium text-white mb-2">
                     Phone Number *
-                    <span className="text-xs text-gray-300 font-normal ml-2">
-                      (Add country code before your number)
-                    </span>
                   </label>
-                  <Input
-                    type="tel"
-                    placeholder="+91 98765 43210"
-                    value={formData.phoneNumber}
-                    onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
-                    className={`bg-white text-black placeholder:text-gray-600 ${errors.phoneNumber ? "border-red-500" : ""}`}
-                    required
-                  />
-                  {errors.phoneNumber && (
-                    <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>
-                  )}
+                  <div className="flex gap-2">
+                    <div className="flex-shrink-0 w-24">
+                      <Input
+                        type="tel"
+                        placeholder="+91"
+                        value={formData.countryCode}
+                        onChange={(e) => {
+                          const value = e.target.value
+                          // Ensure it starts with +
+                          if (value && !value.startsWith("+")) {
+                            handleInputChange('countryCode', `+${value.replace(/\+/g, "")}`)
+                          } else {
+                            handleInputChange('countryCode', value)
+                          }
+                        }}
+                        className={`bg-white text-black placeholder:text-gray-600 ${errors.countryCode ? "border-red-500" : ""}`}
+                        required
+                      />
+                      {errors.countryCode && (
+                        <p className="text-red-500 text-xs mt-1">{errors.countryCode}</p>
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <Input
+                        type="tel"
+                        placeholder="98765 43210"
+                        value={formData.phoneNumber}
+                        onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
+                        className={`bg-white text-black placeholder:text-gray-600 ${errors.phoneNumber ? "border-red-500" : ""}`}
+                        required
+                      />
+                      {errors.phoneNumber && (
+                        <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>
+                      )}
+                    </div>
+                  </div>
                 </div>
 
 
