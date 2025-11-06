@@ -49,6 +49,14 @@ export function Footer() {
                 className="w-12 h-12"
               />
               <span className="text-lg sm:text-xl font-bold gradient-text">Infini8 Voice</span>
+              <span className="text-lg sm:text-xl font-bold text-white mx-3">×</span>
+              <Image
+                src="/88gb.png"
+                alt="88GB Logo"
+                width={42}
+                height={42}
+                className="w-12 h-12 aspect-square object-contain"
+              />
             </Link>
             <p className="text-muted-foreground mb-6 max-w-md">
               Automate customer interactions with AI voice calling agents. 
