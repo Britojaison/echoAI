@@ -86,31 +86,31 @@ export function BenefitsSection() {
   }, [isVisible])
 
   return (
-    <section id="benefits" className="py-20" style={{ background: 'transparent' }}>
+    <section id="benefits" className="md:py-20" style={{ background: 'transparent' }}>
       <div className="container mx-auto px-4">
-        <div className="space-y-32">
+        <div className="space-y-20 md:space-y-40">
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}
               initial={{ opacity: 1, y: 0 }}
               animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto ${
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto ${
                 index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
               }`}
             >
               {/* Content Column */}
               <motion.div
-                className={`space-y-8 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
+                className={`space-y-4 sm:space-y-8 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
                 initial={{ opacity: 1, x: 0 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 + 0.3 }}
               >
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
                   {benefit.title}
                 </h2>
                 
-                <p className="text-xl text-muted-foreground leading-relaxed">
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
                   {benefit.description}
                 </p>
 
@@ -122,7 +122,7 @@ export function BenefitsSection() {
 
               {/* Animation Column */}
               <motion.div
-                className={`relative flex justify-center items-center h-96 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}
+                className={`relative flex justify-center items-center h-40 sm:h-64 lg:h-96 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}
                 initial={{ opacity: 1, x: 0 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 + 0.5 }}
@@ -157,7 +157,7 @@ export function BenefitsSection() {
                     }}
                   >
                     <benefit.icon 
-                      className="w-16 h-16 text-white" 
+                      className="w-12 h-12 sm:w-16 sm:h-16 text-white" 
                     />
                   </motion.div>
 

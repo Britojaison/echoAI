@@ -1,17 +1,25 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Phone } from "lucide-react"
+import { DemoBookingModal } from "@/components/demo-booking-modal"
 
 export function HeroSection() {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+  const [phoneNumber, setPhoneNumber] = useState("")
+
+  const handleLetsTalkClick = () => {
+    setIsDemoModalOpen(true)
+  }
   return (
-    <section className="relative h-[60vh] flex items-end justify-center "
+    <section className="relative h-[50vh] md:h-[60vh] flex items-end justify-center"
       style={{ background: 'transparent' }}
     >
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-80 items-center max-w-12xl mx-auto lg:ml-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-80 items-center max-w-12xl mx-auto lg:ml-5">
           {/* Left Column - Headline */}
           <motion.div
             initial={{ opacity: 1, x: 0 }}
@@ -19,7 +27,7 @@ export function HeroSection() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Voice AI that treats every call like first-class service.
             </h1>
           </motion.div>
@@ -32,19 +40,22 @@ export function HeroSection() {
             className="space-y-6"
           >
             <div className="space-y-2">
-              <p className="text-xl text-white font-medium">Don&apos;t believe us?</p>
-              <p className="text-xl text-white font-medium">Have ECHO AI give you a call.</p>
+              <p className="text-lg sm:text-xl text-white font-medium">Don&apos;t believe us?</p>
+              <p className="text-lg sm:text-xl text-white font-medium">Have ECHO AI give you a call.</p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col gap-3 sm:gap-4">
               <Input
                 type="tel"
                 placeholder="Your Phone Number"
-                className="flex-1 h-12 bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-white/50"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                className="w-full h-12 bg-gray-800/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-white/50"
               />
               <Button 
                 size="lg" 
-                className="h-12 bg-white hover:bg-gray-100 text-blue-600 px-8 font-medium"
+                className="w-full h-12 bg-white hover:bg-gray-100 text-blue-600 font-medium"
+                onClick={handleLetsTalkClick}
               >
                 Let&apos;s Talk
               </Button>
@@ -52,6 +63,13 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
+
+      {/* Demo Booking Modal */}
+      <DemoBookingModal 
+        isOpen={isDemoModalOpen} 
+        onClose={() => setIsDemoModalOpen(false)}
+        initialPhoneNumber={phoneNumber}
+      />
     </section>
   )
 }
