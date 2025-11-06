@@ -2,7 +2,20 @@
 const nextConfig = {
   images: {
     domains: ['images.unsplash.com', 'via.placeholder.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+      },
+    ],
   },
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
 }
 
 module.exports = nextConfig

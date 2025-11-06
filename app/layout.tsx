@@ -7,12 +7,38 @@ import { Footer } from '@/components/footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ECHO AI - AI Voice Calling Agents for Customer Engagement',
-  description: 'Automate customer interactions with AI voice calling agents. Collect feedback, qualify leads, and engage customers in English and regional languages with ECHO AI.',
-  keywords: 'AI voice agents, customer engagement, automated calling, lead qualification, multilingual support, customer feedback',
-  authors: [{ name: 'ECHO AI' }],
+  title: {
+    default: 'ECHO AI - AI Voice Calling Agents for Customer Engagement',
+    template: '%s | ECHO AI'
+  },
+  description: 'Automate customer interactions with AI voice calling agents. Collect feedback, qualify leads, and engage customers in English and regional languages. Trusted by 500+ companies worldwide.',
+  keywords: [
+    'AI voice agents',
+    'voice AI',
+    'customer engagement',
+    'automated calling',
+    'lead qualification',
+    'multilingual support',
+    'customer feedback',
+    'conversational AI',
+    'voice automation',
+    'AI phone calls',
+    'customer service automation',
+    'outbound calling',
+    'inbound calling',
+    'AI chatbot',
+    'voice bot',
+    'customer experience',
+    'call center automation',
+    'telephony AI',
+    'interactive voice response',
+    'IVR'
+  ],
+  authors: [{ name: 'ECHO AI', url: 'https://echoai.com' }],
   creator: 'ECHO AI',
   publisher: 'ECHO AI',
+  applicationName: 'ECHO AI',
+  category: 'Technology',
   icons: {
     icon: [
       { url: '/echo-logo.png', sizes: '32x32', type: 'image/png' },
@@ -67,6 +93,17 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  verification: {
+    // Add verification codes when you get them from Google Search Console, Bing, etc.
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+    // bing: 'your-bing-verification-code',
+  },
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
   },
 }
 
