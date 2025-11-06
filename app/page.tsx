@@ -9,7 +9,7 @@ import { StructuredData } from '@/components/structured-data'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'AI Voice Calling Agents for Customer Engagement',
+  title: 'Infini8 Voice',
   description: 'Automate customer interactions with AI voice calling agents. Collect feedback, qualify leads, and engage customers in English and regional languages. Trusted by 500+ companies worldwide.',
   openGraph: {
     title: 'Infini8 Voice - AI Voice Calling Agents for Customer Engagement',

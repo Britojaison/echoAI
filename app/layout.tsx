@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Infini8 Voice - AI Voice Calling Agents for Customer Engagement',
+    default: 'Infini8 Voice',
     template: '%s | Infini8 Voice'
   },
   description: 'Automate customer interactions with AI voice calling agents. Collect feedback, qualify leads, and engage customers in English and regional languages. Trusted by 500+ companies worldwide.',
