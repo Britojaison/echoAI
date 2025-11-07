@@ -137,10 +137,10 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <div aria-hidden className="bg-black overflow-hidden">
+        <div aria-hidden className="relative z-20 bg-black overflow-hidden">
           <div className="border-t border-white/10" />
-          <div className="flex justify-center items-end h-[88vw] sm:h-[66vw] md:h-[52vw] lg:h-[44vw]">
-            <span className="text-white/10 tracking-tight font-black leading-[0.8] text-[80vw] sm:text-[60vw] md:text-[48vw] lg:text-[40vw]">
+          <div className="flex justify-center items-end h-[80vw] sm:h-[60vw] md:h-[48vw] lg:h-[40vw]">
+            <span className="text-white/80 tracking-tight font-black leading-[0.8] text-[80vw] sm:text-[60vw] md:text-[48vw] lg:text-[40vw]">
               infini8
             </span>
           </div>
