@@ -1,10 +1,27 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
+import { Instrument_Sans } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const satoshi = localFont({
+  src: [
+    { path: '../public/fonts/Satoshi-Light.woff', weight: '300', style: 'normal' },
+    { path: '../public/fonts/Satoshi-Regular.woff', weight: '400', style: 'normal' },
+    { path: '../public/fonts/Satoshi-Medium.woff', weight: '500', style: 'normal' },
+    { path: '../public/fonts/Satoshi-Bold.woff', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-satoshi',
+  display: 'swap',
+})
+
+const instrumentSans = Instrument_Sans({
+  subsets: ['latin'],
+  variable: '--font-instrument-sans',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -114,12 +131,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${satoshi.variable} ${instrumentSans.variable} antialiased`}>
         <Navigation />
         <main className="relative">
           {children}
         </main>
         <Footer />
+        <div aria-hidden className="bg-black overflow-hidden">
+          <div className="border-t border-white/10" />
+          <div className="flex justify-center items-end h-[88vw] sm:h-[66vw] md:h-[52vw] lg:h-[44vw]">
+            <span className="text-white/10 tracking-tight font-black leading-[0.8] text-[80vw] sm:text-[60vw] md:text-[48vw] lg:text-[40vw]">
+              infini8
+            </span>
+          </div>
+        </div>
       </body>
     </html>
   )

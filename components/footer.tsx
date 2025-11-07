@@ -166,24 +166,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="border-t border-border mt-8 sm:mt-12 pt-6 sm:pt-8">
-          <div className="max-w-md mx-auto sm:mx-0">
-            <h3 className="font-semibold mb-2">Stay Updated</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Get the latest updates on AI voice technology and product features.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2 sm:space-x-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-3 py-2 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-              />
-              <Button size="sm" className="w-full sm:w-auto">Subscribe</Button>
-            </div>
-          </div>
-        </div>
-
         {/* Copyright */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">

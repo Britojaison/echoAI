@@ -175,6 +175,7 @@ export function BenefitsSection() {
                           x: lang.x,
                           y: lang.y,
                           zIndex: lang.z,
+                          fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", sans-serif',
                         }}
                         initial={{ opacity: 0, scale: 0.5, rotate: -5 }}
                         animate={isVisible ? {
