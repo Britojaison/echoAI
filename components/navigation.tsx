@@ -62,29 +62,30 @@ export function Navigation({ lightTheme = false }: NavigationProps) {
   return (
     <nav
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300",
         lightTheme
           ? isScrolled
             ? "bg-white/90 backdrop-blur-md border-b border-gray-200"
             : "bg-white border-b border-gray-200"
           : isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border"
+          ? "bg-black/35 backdrop-blur-lg border-b border-white/10"
           : "bg-transparent"
       )}
+      style={{ position: 'fixed', top: 0, left: 0, right: 0 }}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center h-16">
+      <div className="container mx-auto px-4 py-2">
+        <div className="flex items-center min-h-[54px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 shrink-0">
             <Image
               src="/echo-logo.png"
               alt="Infini8 Voice Logo"
-              width={80}
-              height={80}
-              className="w-16 h-16 sm:w-20 sm:h-20"
+              width={48}
+              height={48}
+              className="w-12 h-12"
             />
             <span className={cn(
-              "text-xl font-semibold",
+              "text-lg sm:text-xl font-semibold whitespace-nowrap",
               lightTheme ? "text-gray-900" : "text-foreground"
             )}>
               Infini8 Voice
