@@ -15,7 +15,7 @@ export function HeroSection() {
     setIsDemoModalOpen(true)
   }
   return (
-    <section className="relative h-[50vh] md:h-[60vh] flex items-end justify-center"
+    <section className="relative min-h-[50vh] md:h-[60vh] flex items-end justify-center pt-4 md:pt-0"
       style={{ background: 'transparent' }}
     >
       <div className="container mx-auto px-4">
