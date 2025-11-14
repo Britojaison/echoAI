@@ -1,13 +1,25 @@
 import { NextResponse } from "next/server";
+import { createSupabaseClient } from "@/lib/supabaseClient";
 
 export async function POST(req: Request) {
   try {
     const { phone, name } = await req.json();
 
-    console.log("API Call Request:", { phone, name });
+    const rawPhone =
+      typeof phone === "string"
+        ? phone.trim()
+        : typeof phone === "number"
+          ? phone.toString()
+          : "";
+    const trimmedName = typeof name === "string" ? name.trim() : "";
 
-    if (!phone || !/^\+?[1-9]\d{7,14}$/.test(phone))
+    console.log("API Call Request:", { phone: rawPhone, name: trimmedName });
+
+    if (!rawPhone || !/^\+?[1-9]\d{7,14}$/.test(rawPhone))
       return NextResponse.json({ error: "Use E.164 phone, e.g. +919876543210" }, { status: 400 });
+
+    const normalizedPhone = rawPhone.startsWith("+") ? rawPhone : `+${rawPhone}`;
+    const customerName = trimmedName || "Guest";
 
     // Check if environment variables are set
     if (!process.env.ELEVENLABS_API_KEY) {
@@ -25,11 +37,28 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Agent Phone ID not configured" }, { status: 500 });
     }
 
+    try {
+      const supabase = createSupabaseClient();
+      const { error: supabaseError } = await supabase.from("call_requests").insert({
+        name: trimmedName || null,
+        phone: normalizedPhone,
+        created_at: new Date().toISOString(),
+      });
+
+      if (supabaseError) {
+        console.error("Failed to store call request in Supabase:", supabaseError);
+      } else {
+        console.info("Stored call request in Supabase");
+      }
+    } catch (supabaseClientError) {
+      console.error("Supabase client error:", supabaseClientError);
+    }
+
     const requestBody = {
       agent_id: process.env.ELEVENLABS_AGENT_ID,
       agent_phone_number_id: process.env.ELEVENLABS_AGENT_PHONE_ID,
-      to_number: phone.startsWith("+") ? phone : `+${phone}`,
-      customer: { name: name || "Guest" },
+      to_number: normalizedPhone,
+      customer: { name: customerName },
       language: "en-IN",
       metadata: { source: "infini8voice-site" }
     };
@@ -59,8 +88,8 @@ export async function POST(req: Request) {
 
   } catch (error) {
     console.error("API route error:", error);
-    return NextResponse.json({ 
-      error: `Internal server error: ${error instanceof Error ? error.message : 'Unknown error'}` 
+    return NextResponse.json({
+      error: `Internal server error: ${error instanceof Error ? error.message : 'Unknown error'}`
     }, { status: 500 });
   }
 }
