@@ -1,0 +1,9 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/send-delayed-emails",
+      "schedule": "* * * * *"
+    }
+  ]
+}
+

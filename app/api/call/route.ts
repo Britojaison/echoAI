@@ -3,7 +3,7 @@ import { createSupabaseClient } from "@/lib/supabaseClient";
 
 export async function POST(req: Request) {
   try {
-    const { phone, name } = await req.json();
+    const { phone, name, email } = await req.json();
 
     const rawPhone =
       typeof phone === "string"
@@ -12,8 +12,9 @@ export async function POST(req: Request) {
           ? phone.toString()
           : "";
     const trimmedName = typeof name === "string" ? name.trim() : "";
+    const trimmedEmail = typeof email === "string" ? email.trim() : "";
 
-    console.log("API Call Request:", { phone: rawPhone, name: trimmedName });
+    console.log("API Call Request:", { phone: rawPhone, name: trimmedName, email: trimmedEmail });
 
     if (!rawPhone || !/^\+?[1-9]\d{7,14}$/.test(rawPhone))
       return NextResponse.json({ error: "Use E.164 phone, e.g. +919876543210" }, { status: 400 });
@@ -39,10 +40,17 @@ export async function POST(req: Request) {
 
     try {
       const supabase = createSupabaseClient();
+      
+      // Calculate scheduled email time (5 minutes from now)
+      const scheduledEmailAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes
+      
       const { error: supabaseError } = await supabase.from("call_requests").insert({
         name: trimmedName || null,
+        email: trimmedEmail || null,
         phone: normalizedPhone,
         created_at: new Date().toISOString(),
+        scheduled_email_at: trimmedEmail ? scheduledEmailAt.toISOString() : null,
+        email_sent_at: null,
       });
 
       if (supabaseError) {

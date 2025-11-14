@@ -15,6 +15,7 @@ interface DemoBookingModalProps {
 export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: DemoBookingModalProps) {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     countryCode: "+91",
     phoneNumber: ""
   })
@@ -66,6 +67,11 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
     const newErrors: Record<string, string> = {}
 
     if (!formData.name.trim()) newErrors.name = "Name is required"
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required"
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = "Please enter a valid email address"
+    }
     if (!formData.countryCode.trim()) newErrors.countryCode = "Country code is required"
     if (!formData.phoneNumber.trim()) newErrors.phoneNumber = "Phone number is required"
 
@@ -103,7 +109,11 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
       const res = await fetch("/api/call", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone, name: formData.name.trim() || "Guest" })
+        body: JSON.stringify({ 
+          phone, 
+          name: formData.name.trim() || "Guest",
+          email: formData.email.trim()
+        })
       })
 
       if (!res.ok) {
@@ -114,7 +124,7 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
       // success UI
       setOkMsg("Call is being placed. You'll receive it shortly.")
       // Reset & close after a moment
-      setFormData({ name: "", countryCode: "+91", phoneNumber: "" })
+      setFormData({ name: "", email: "", countryCode: "+91", phoneNumber: "" })
       setTimeout(() => {
         setOkMsg(null)
         onClose()
@@ -176,6 +186,24 @@ export function DemoBookingModal({ isOpen, onClose, initialPhoneNumber = "" }: D
                   />
             {errors.name && (
               <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+            )}
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-white mb-2">
+              Email *
+            </label>
+            <Input
+              type="email"
+              placeholder="your.email@example.com"
+              value={formData.email}
+              onChange={(e) => handleInputChange('email', e.target.value)}
+              className={`bg-white text-black placeholder:text-gray-600 ${errors.email ? "border-red-500" : ""}`}
+              required
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">{errors.email}</p>
             )}
           </div>
 
