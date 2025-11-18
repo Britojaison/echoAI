@@ -15,6 +15,6 @@ ON call_requests(scheduled_email_at)
 WHERE email_sent_at IS NULL AND email IS NOT NULL;
 
 -- Add comment for documentation
-COMMENT ON COLUMN call_requests.scheduled_email_at IS 'Timestamp when follow-up email should be sent (5 minutes after booking)';
+COMMENT ON COLUMN call_requests.scheduled_email_at IS 'Timestamp when follow-up email should be sent (3 minutes after booking)';
 COMMENT ON COLUMN call_requests.email_sent_at IS 'Timestamp when follow-up email was actually sent';
 

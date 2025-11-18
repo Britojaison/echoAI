@@ -41,8 +41,8 @@ export async function POST(req: Request) {
     try {
       const supabase = createSupabaseClient();
       
-      // Calculate scheduled email time (5 minutes from now)
-      const scheduledEmailAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes
+      // Calculate scheduled email time (3 minutes from now)
+      const scheduledEmailAt = new Date(Date.now() + 3 * 60 * 1000); // 3 minutes
       
       const { error: supabaseError } = await supabase.from("call_requests").insert({
         name: trimmedName || null,
