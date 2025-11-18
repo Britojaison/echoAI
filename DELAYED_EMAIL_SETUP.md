@@ -6,8 +6,8 @@ This document explains how the delayed email system works and how to set it up.
 
 When a user books a demo and provides their email, the system:
 1. Stores the email in the database with a `scheduled_email_at` timestamp (5 minutes from booking)
-2. A cron job runs every minute to check for pending emails
-3. Emails are sent 5 minutes after the user books the demo
+2. An external cron service calls the API endpoint every minute to check for pending emails
+3. Emails are sent 5 minutes after the user books the demo using the same SMTP setup as the contact form
 4. The `email_sent_at` field is updated after successful sending
 
 ## Database Setup
@@ -30,15 +30,15 @@ WHERE email_sent_at IS NULL AND email IS NOT NULL;
 
 ## Environment Variables
 
-Add these to your `.env.local` and Vercel environment variables:
+Add these to your `.env.local` and production environment:
 
 ```bash
-# Gmail SMTP (required for sending emails)
+# Gmail SMTP (required for sending emails - same as contact form)
 GMAIL_USER=your-email@gmail.com
 GMAIL_APP_PASSWORD=your-app-password
 
-# Cron Secret (optional, but recommended for security)
-CRON_SECRET=your-random-secret-key
+# Optional: Secret for securing the cron endpoint
+EMAIL_CRON_SECRET=your-random-secret-key
 ```
 
 ### Getting Gmail App Password
@@ -49,38 +49,31 @@ CRON_SECRET=your-random-secret-key
 4. Generate a new app password for "Mail"
 5. Use this password in `GMAIL_APP_PASSWORD`
 
-## Vercel Cron Jobs Setup
+## External Cron Service Setup
 
-### 1. Deploy to Vercel
+Since we're not using Vercel Cron, you need to set up an external cron service to call the endpoint every minute.
 
-The `vercel.json` file is already configured with the cron job:
+### Option 1: cron-job.org (Free)
 
-```json
-{
-  "crons": [
-    {
-      "path": "/api/cron/send-delayed-emails",
-      "schedule": "* * * * *"
-    }
-  ]
-}
+1. Go to [cron-job.org](https://cron-job.org) and create a free account
+2. Create a new cron job:
+   - **URL**: `https://your-domain.com/api/cron/send-delayed-emails`
+   - **Schedule**: Every minute (`* * * * *`)
+   - **Request Method**: GET or POST
+   - **Headers**: `Authorization: Bearer YOUR_EMAIL_CRON_SECRET` (if you set EMAIL_CRON_SECRET)
+3. Save and activate the cron job
+
+### Option 2: EasyCron (Free tier available)
+
+1. Go to [EasyCron](https://www.easycron.com) and sign up
+2. Create a new cron job with the same settings as above
+
+### Option 3: Any other cron service
+
+Any service that can make HTTP requests on a schedule will work. Just point it to:
 ```
-
-This runs every minute (`* * * * *`).
-
-### 2. Enable Cron Jobs in Vercel
-
-1. Go to your Vercel project settings
-2. Navigate to "Cron Jobs" section
-3. The cron job should appear automatically after deployment
-4. Verify it's enabled
-
-### 3. Set CRON_SECRET (Recommended)
-
-For security, set a `CRON_SECRET` environment variable in Vercel:
-1. Go to Project Settings → Environment Variables
-2. Add `CRON_SECRET` with a random string
-3. The cron endpoint will verify this secret
+https://your-domain.com/api/cron/send-delayed-emails
+```
 
 ## How It Works
 
@@ -91,11 +84,11 @@ User Books Demo
     ↓
 Email stored with scheduled_email_at = NOW() + 5 minutes
     ↓
-Cron job runs every minute
+External cron service calls endpoint every minute
     ↓
 Query: scheduled_email_at <= NOW() AND email_sent_at IS NULL
     ↓
-Send email via SMTP
+Send email via SMTP (same as contact form)
     ↓
 Update email_sent_at = NOW()
 ```
@@ -103,31 +96,36 @@ Update email_sent_at = NOW()
 ### Files Involved
 
 - **`app/api/call/route.ts`** - Sets `scheduled_email_at` when storing demo booking
-- **`app/api/cron/send-delayed-emails/route.ts`** - Cron job that sends pending emails
-- **`lib/email.ts`** - Email utility with follow-up email template
-- **`vercel.json`** - Cron job configuration
+- **`app/api/cron/send-delayed-emails/route.ts`** - Simple endpoint that sends pending emails using nodemailer (same as contact form)
 
 ## Testing
 
 ### Manual Testing
 
-You can manually trigger the cron job by calling:
+You can manually trigger the endpoint:
 
 ```bash
+# Without secret
+curl -X GET https://your-domain.com/api/cron/send-delayed-emails
+
+# With secret (if EMAIL_CRON_SECRET is set)
 curl -X GET https://your-domain.com/api/cron/send-delayed-emails \
-  -H "Authorization: Bearer YOUR_CRON_SECRET"
+  -H "Authorization: Bearer YOUR_EMAIL_CRON_SECRET"
 ```
 
 ### Local Testing
 
 1. Set `scheduled_email_at` to a past date in your database
 2. Set `email_sent_at` to NULL
-3. Call the endpoint manually or wait for cron
+3. Call the endpoint manually:
+   ```bash
+   curl http://localhost:3000/api/cron/send-delayed-emails
+   ```
 
 ## Monitoring
 
-Check Vercel logs to monitor:
-- Cron job execution
+Check your deployment logs to monitor:
+- Endpoint calls from cron service
 - Email sending success/failures
 - Database query results
 
@@ -135,16 +133,17 @@ Check Vercel logs to monitor:
 
 ### Emails Not Sending
 
-1. **Check Gmail credentials**: Verify `GMAIL_USER` and `GMAIL_APP_PASSWORD` are set
-2. **Check cron job**: Verify it's running in Vercel dashboard
+1. **Check Gmail credentials**: Verify `GMAIL_USER` and `GMAIL_APP_PASSWORD` are set (same as contact form)
+2. **Check cron service**: Verify it's calling the endpoint successfully
 3. **Check database**: Verify `scheduled_email_at` is set correctly
-4. **Check logs**: Look for errors in Vercel function logs
+4. **Check logs**: Look for errors in your deployment logs
 
-### Cron Job Not Running
+### Cron Service Not Working
 
-1. Verify `vercel.json` is deployed
-2. Check Vercel Cron Jobs dashboard
-3. Ensure you're on a Vercel plan that supports cron jobs (Pro/Enterprise)
+1. Verify the cron service is active and running
+2. Check the cron service logs for failed requests
+3. Test the endpoint manually to ensure it works
+4. Verify the URL is correct and accessible
 
 ### Database Errors
 
@@ -154,21 +153,20 @@ Check Vercel logs to monitor:
 
 ## Email Template
 
-The follow-up email includes:
+The follow-up email uses the same styling approach as the contact form and includes:
 - Thank you message
 - Demo call information
 - What to expect next
 - Contact information
 - Professional HTML styling
 
-You can customize the template in `lib/email.ts`.
+The email template is embedded directly in the cron endpoint (same pattern as contact form).
 
-## Future Enhancements
+## Advantages of This Approach
 
-Potential improvements:
-- Retry logic for failed emails
-- Email templates for different scenarios
-- Analytics on email open rates
-- A/B testing different email content
-- Queue system for better reliability
+- ✅ Simple - uses the same nodemailer setup as contact form
+- ✅ No vendor lock-in - works with any hosting provider
+- ✅ Free - can use free external cron services
+- ✅ Easy to debug - just a simple API endpoint
+- ✅ Same reliability as contact form emails
 
